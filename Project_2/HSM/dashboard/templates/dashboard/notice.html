@@ -1,0 +1,31 @@
+{% extends 'dashboard/base.html' %}
+{% block content %}
+    <div class="app-title">
+        <div>
+          <h1><i class="fa fa-edit"></i> Notice </h1>
+          <p>You will see all updated notices of society here.</p>
+        </div>
+      </div>
+    <div class="row user">
+        <div class="col-md-9">
+          <div class="tab-content">
+            <div class="tab-pane active" id="user-timeline">
+                {% for notice in data %}
+              <div class="timeline-post">
+                <div class="post-media">
+                  <div class="content">
+                    <h5><a href="#">{{notice.title}}</a></h5>
+                    <p class="text-muted"><small>{{notice.date}}</small></p>
+                  </div>
+                </div>
+                <div class="post-content">
+                  {{notice.description|safe}}
+                </div>
+              </div>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock content %}
+

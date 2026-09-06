@@ -1,0 +1,120 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load mathfilters %}
+{% block content %}
+{{ block.super }}
+
+<div class="app-title">
+  <div>
+    <h1><i class="fa fa-file-text-o"></i>Purchase Order</h1>
+    <p>Build a Purchase Order</p>
+  </div>
+  <ul class="app-breadcrumb breadcrumb">
+    <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+    <li class="breadcrumb-item"><a href="{% url 'dashboard:purchase_order_table' %}">Purchase Order Table</a></li>
+  </ul>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="tile">
+      <form class="form-horizontal" action="" method="POST">
+          {% csrf_token %}
+      <section class="invoice">
+        <div class="row mb-4">
+          <div class="col-6">
+            <h4>Purchase Order No: {{purchase_order_maker.purchase_order_no}}</h4>
+          </div>
+          <div class="col-6">
+            <h4> Date: {{purchase_order_maker.date}}</h4>
+          </div>
+        </div>
+        <div class="row invoice-info">
+          <div class="col-4">To<br/>
+              <label class="control-label col-md-3"><h4>{{purchase_order_maker.vendor.label}}</h4></label>
+                        <div class="col-md-8">
+                            {{purchase_order_maker.vendor}}
+                        </div>
+          </div>
+        </div>
+          <br/><br/>
+        <div class="form-group row">
+            <label class="control-label col-md-3"><h4>{{purchase_order_maker.special_instructions.label}}:</h4></label>
+              <div class="col-md-8">
+                {{purchase_order_maker.special_instructions}}
+              </div>
+            </div>
+
+        <div class="row">
+          <div class="col-12 table-responsive">
+            <table class="table table-striped" id="sampleTable">
+              <thead>
+              <tr>
+                <th>{{purchase_order_lines.product.label}} </th>
+                <th>{{purchase_order_lines.quantity.label}}</th>
+                <th>{{purchase_order_lines.product_unit_price.label}}</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+                 <tr>
+                    <td>{{purchase_order_lines.product}} </td>
+                    <td>{{purchase_order_lines.quantity}} </td>
+                    <td>{{purchase_order_lines.product_unit_price}} </td>
+                   <td><button type="button" class="remove"><i class="fa fa-trash"></i></button></td>
+                 </tr>
+              </tbody>
+               </table>
+              <button id="addRow" type="button"><i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+        <div class="tile-footer">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-3">
+                                <button class="btn btn-primary"  id="id_btn_submit_po" type="submit"><i
+                                        class="fa fa-fw fa-lg fa-check-circle"></i>Submit
+                                </button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i
+                                    class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+      </section>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+{{ block.super }}
+<script type="text/javascript" src="{% static 'dashboard/js/plugins/jquery.dataTables.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'dashboard/js/plugins/dataTables.bootstrap.min.js' %}"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+var t = $('#sampleTable').DataTable();
+
+var product = `<tr><td> {{purchase_order_lines.product}} </td> </tr>`
+var quantity = `<tr><td> {{purchase_order_lines.quantity}} </td></tr>`
+var product_unit_price = `<tr><td> {{purchase_order_lines.product_unit_price}} </td></tr>`
+var rmb = `<tr><td> <button type="button" class="remove"><i class="fa fa-trash"></i></button> </td></tr>`
+    $('#addRow').click(function(){
+       t.row.add( [
+             product,
+             quantity,
+             product_unit_price,
+             rmb
+        ] ).draw( false );
+    });
+    $('#sampleTable tbody').on( 'click', '.remove', function () {
+        var index =  t.row( this ).index()
+            t.row(index).remove().draw();
+} );
+
+$('#id_btn_submit_po').on( 'click', function () {
+        console.log("asdfasdf", t.$('input, select').serialize())
+        console.log("asdfasdf", t.rows().data().toArray())
+        console.log("asdfasdf", t.rows().nodes().page.len(-1).draw(false))
+} );
+
+});
+</script>
+{% endblock %}

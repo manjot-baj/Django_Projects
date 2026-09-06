@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sample</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <style>
+        .container {
+            width: 500px;
+            margin: 100px auto;
+        }
+        input {
+            width: 300px;
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px;
+        }
+        .remove {
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
+            background-color: tomato;
+            color: white;
+            border: none;
+            border-radius: 15px;
+        }
+        #addRow, #getValues {
+            width: 130px;
+            height: 40px;
+            font-size: 16px;
+            background-color: lightseagreen;
+            color: white;
+            border: none;
+            margin: 20px;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+        tr:hover {
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <table>
+        <tbody>
+            <tr>
+                <td><input type="text" name="name"></td>
+                <td><button class="remove">-</button></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="name"></td>
+                <td><button class="remove">-</button></td>
+            </tr>
+
+<!--        <tr><th><label for="id_purchase_order_no">Purchase order no:</label></th><td><ul class="errorlist"><li>This field is required.</li></ul><input type="text" name="purchase_order_no" maxlength="50" required id="id_purchase_order_no"><input type="hidden" name="initial-purchase_order_no" id="initial-id_purchase_order_no"></td></tr>-->
+<!--<tr><th><label for="id_date">Date:</label></th><td><ul class="errorlist"><li>This field is required.</li></ul><input type="text" name="date" required id="id_date"><input type="hidden" name="initial-date" id="initial-id_date"></td></tr>-->
+<!--<tr><th><label for="id_society">Society:</label></th><td><select name="society" required id="id_society">-->
+<!--  <option value="">-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+
+<!--  <option value="1" selected>Vasundhara .co.hsg.soc</option>-->
+
+<!--</select></td></tr>-->
+<!--<tr><th><label for="id_vendor">Vendor:</label></th><td><select name="vendor" required id="id_vendor">-->
+<!--  <option value="">-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+
+<!--  <option value="6" selected>Abhijeet</option>-->
+
+<!--</select></td></tr>-->
+<!--<tr><th><label for="id_special_instructions">Special instructions:</label></th><td><textarea name="special_instructions" cols="40" rows="10" maxlength="50" id="id_special_instructions">-->
+<!-- xz x </textarea></td></tr>-->
+
+<!--        <tr><th><label for="id_product">Product:</label></th><td><select name="product" required id="id_product">-->
+<!--  <option value="">-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+
+<!--  <option value="1" selected>Asus</option>-->
+
+<!--</select></td></tr>-->
+<!--<tr><th><label for="id_quantity">Quantity:</label></th><td><input type="number" name="quantity" value="1" min="0" required id="id_quantity"></td></tr>-->
+<!--<tr><th><label for="id_product_unit_price">Product unit price:</label></th><td><input type="number" name="product_unit_price" value="0.0" step="0.01" required id="id_product_unit_price"></td></tr>-->
+
+
+        </tbody>
+    </table>
+    <button id="addRow">+ Add</button>
+    <button id="getValues">Get Values</button>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script>
+var html = '<tr><td><input type="text" name="name"></td><td><button class="remove">-</button></td></tr>';
+
+$(function() {
+    $('tbody').sortable();
+
+    $('#addRow').click(function(){
+        $('tbody').append(html);
+    });
+
+    $(document).on('click', '.remove', function() {
+        $(this).parents('tr').remove();
+    });
+
+    $('#getValues').click(function(){
+        var values = [];
+        $('input[name="name"]').each(function(i, elem){
+            values.push($(elem).val());
+        });
+        alert(values.join(', '));
+    });
+});
+</script>
+</body>
+</html>

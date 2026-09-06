@@ -1,1 +1,1 @@
-# Stock-Management
+# My Django Projects
