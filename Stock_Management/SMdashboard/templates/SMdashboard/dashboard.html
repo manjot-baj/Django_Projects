@@ -1,0 +1,319 @@
+{% extends 'SMdashboard/base.html' %}
+{% load static %}
+{% block content %}
+{% load sm_tags %}
+{{ block.super }}
+<div class="app-title">
+    {% if company.name %}
+    <div>
+        <h1 style="text-transform:uppercase"><i class="fa fa-dashboard"></i> {{company.name}}</h1>
+        <p>{{company.company_address}}</p>
+    </div>
+    {% else %}
+    <div>
+        <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
+        <p>Storeck Dashboard</p>
+    </div>
+    {% endif %}
+
+</div>
+<div class="row">
+
+    {% if request.user|is_owner %}
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'daybook' %}">
+            <div class="widget-small info coloured-icon"><i class="icon fa fa-rupee fa-3x"></i>
+                <div class="info">
+                    <h4>Total Credit Amount</h4>
+                    {% if credited %}
+                    <p><b>{{credited}}</b></p>
+                    {% else %}
+                    <p><b>0</b></p>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'daybook' %}">
+            <div class="widget-small info coloured-icon"><i class="icon fa fa-rupee fa-3x"></i>
+                <div class="info">
+                    <h4>Total Debit Amount</h4>
+                    {% if debited %}
+                    <p><b>{{debited}}</b></p>
+                    {% else %}
+                    <p><b>0</b></p>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'daybook' %}">
+            <div class="widget-small info coloured-icon"><i class="icon fa fa-rupee fa-3x"></i>
+                <div class="info">
+                    <h4>Cash in Hand</h4>
+                    {% if total %}
+                    <p><b>{{total}}</b></p>
+                    {% else %}
+                    <p><b>0</b></p>
+                    {% endif %}
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endif %}
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'enquiry' %}">
+            <div class="widget-small primary coloured-icon"><i class="icon fa fa-question-circle fa-3x"></i>
+                <div class="info">
+                    <h4>Total Enquiries</h4>
+                    <p><b>{{enquiry}}</b></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'service' %}">
+            <div class="widget-small primary coloured-icon"><i class="icon fa fa-briefcase fa-3x"></i>
+                <div class="info">
+                    <h4>Total Services</h4>
+                    <p><b>{{service}}</b></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="service">
+            <div class="widget-small danger coloured-icon"><i class="icon fa fa-hourglass-start fa-3x"></i>
+                <div class="info">
+                    <h4>Pending Service</h4>
+                    <p><b>{{pending}}</b></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="service">
+            <div class="widget-small warning coloured-icon"><i class="icon fa fa-hourglass-half fa-3x"></i>
+                <div class="info">
+                    <h4>On Progress Service</h4>
+                    <p><b>{{on_progress}}</b></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="service">
+            <div class="widget-small info coloured-icon"><i class="icon fa fa-hourglass-end fa-3x"></i>
+                <div class="info">
+                    <h4>Completed Service</h4>
+                    <p><b>{{completed}}</b></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'client_data' %}">
+            <div class="widget-small primary coloured-icon"><i class="icon fa fa-user fa-3x"></i>
+                <div class="info">
+                    <h4>Clients</h4>
+                    <p><b>{{client}}</b></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'amc_data' %}">
+            <div class="widget-small info coloured-icon"><i class="icon fa fa-user fa-3x"></i>
+                <div class="info">
+                    <h4>AMC's</h4>
+                    <p><b>{{amc_info}}</b></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'vendor_data' %}">
+            <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
+                <div class="info">
+                    <h4>Vendors</h4>
+                    <p><b>{{vendor}}</b></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <a href="{% url 'employee' %}">
+            <div class="widget-small primary coloured-icon"><i class="icon fa fa-address-card-o fa-3x"></i>
+                <div class="info">
+                    <h4>Employees</h4>
+                    <p><b>{{employee}}</b></p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!--    <div class="col-md-6 col-lg-3">-->
+    <!--        <a href="">-->
+    <!--            <div class="widget-small primary coloured-icon"><i class="icon fa fa-shopping-bag fa-3x"></i>-->
+    <!--                <div class="info">-->
+    <!--                    <h4>Products</h4>-->
+    <!--                    <p><b></b></p>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </a>-->
+    <!--    </div>-->
+
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="tile">
+            <h3 class="tile-title">AMC Alert for Tommorrow</h3>
+            <div>
+                {% if amc_alert == "Tommorrow No AMC Service" %}
+                <strong>Tommorrow No AMC Service</strong>
+                {% else %}
+                <strong>The Following Clients have AMC Service Tommorrow</strong><br/><br/>
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Client Name</th>
+                        <th>Service</th>
+                        <th>Phone</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in amc_alert %}
+                    <tr>
+                        <th> {{data.date}}</th>
+                        <th>{{data.client}}</th>
+                        <th>{{data.service_status}}</th>
+                        <th>{{data.phone}}</th>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="tile">
+            <h3 class="tile-title"> Today AMC Service</h3>
+            <div>
+                {% if amcToday %}
+                <strong>The Following Clients have AMC Service Today</strong><br/><br/>
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Client Name</th>
+                        <th>Phone</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in amcToday %}
+                    <tr>
+                        <th> {{data.date}}</th>
+                        <th>{{data.client}}</th>
+                        <th>{{data.phone}}</th>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <strong>Today No AMC Service</strong>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="tile">
+            <h3 class="tile-title"> Month AMC Services</h3>
+            <div>
+                {% if this_month_amc == 'This Month No AMC Service' %}
+                <strong>This Month No AMC Services</strong>
+                {% else %}
+                <strong>The Following Clients have AMC Services this Month</strong><br/><br/>
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Client Name</th>
+                        <th>Service</th>
+                        <th>Phone</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for data in this_month_amc %}
+                    <tr>
+                        <th> {{data.date}}</th>
+                        <th>{{data.client}}</th>
+                        <th>{{data.service_status}}</th>
+                        <th>{{data.phone}}</th>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+{{ block.super }}
+<script type="text/javascript" src="{% static 'SMdashboard/js/plugins/chart.js' %}"></script>
+<script type="text/javascript">
+      var data = {
+      	labels: ["January", "February", "March", "April", "May"],
+      	datasets: [
+      		{
+      			label: "My First dataset",
+      			fillColor: "rgba(220,220,220,0.2)",
+      			strokeColor: "rgba(220,220,220,1)",
+      			pointColor: "rgba(220,220,220,1)",
+      			pointStrokeColor: "#fff",
+      			pointHighlightFill: "#fff",
+      			pointHighlightStroke: "rgba(220,220,220,1)",
+      			data: [65, 59, 80, 81, 56]
+      		},
+      		{
+      			label: "My Second dataset",
+      			fillColor: "rgba(151,187,205,0.2)",
+      			strokeColor: "rgba(151,187,205,1)",
+      			pointColor: "rgba(151,187,205,1)",
+      			pointStrokeColor: "#fff",
+      			pointHighlightFill: "#fff",
+      			pointHighlightStroke: "rgba(151,187,205,1)",
+      			data: [28, 48, 40, 19, 86]
+      		}
+      	]
+      };
+      var pdata = [
+      	{
+      		value: 300,
+      		color: "#46BFBD",
+      		highlight: "#5AD3D1",
+      		label: "Complete"
+      	},
+      	{
+      		value: 50,
+      		color:"#F7464A",
+      		highlight: "#FF5A5E",
+      		label: "In-Progress"
+      	}
+      ]
+
+      var ctxl = $("#lineChartDemo").get(0).getContext("2d");
+      var lineChart = new Chart(ctxl).Line(data);
+
+      var ctxp = $("#pieChartDemo").get(0).getContext("2d");
+      var pieChart = new Chart(ctxp).Pie(pdata);
+
+
+
+
+</script>
+{% endblock %}

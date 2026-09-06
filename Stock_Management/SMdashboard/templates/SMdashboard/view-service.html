@@ -1,0 +1,149 @@
+{% extends 'SMdashboard/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .responsive {
+  width: 250px;
+  height: auto;
+}
+
+</style>
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-edit"></i> Detailed Service </h1>
+        <p>You will see detailed service here.</p>
+    </div>
+    <ul class="app-breadcrumb breadcrumb">
+        <a class='btn btn-primary' role='button' href=" {% url 'viewserviceinvoice' data.pk %} ">Service Invoice</a>
+    </ul>
+</div>
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="tile">
+                <h3 class="tile-title">Service Details</h3>
+                <div class="tile-body">
+
+                    <h6><strong>Service No :&nbsp; &nbsp; {{data.number}}</strong></h6><br/>
+                    <h6><strong>Date:&nbsp; &nbsp; {{data.service_date}}</strong></h6><br/>
+                    <h6><strong>Client:&nbsp; &nbsp; {{data.service_client}}</strong></h6><br>
+
+                    {% if data.service_description == "" %}
+                    <h6><strong>Description:&nbsp; &nbsp; -</strong></h6><br/>
+                    {% else %}
+                    <h6><strong>Description:&nbsp; &nbsp; {{data.service_description}}</strong></h6><br>
+                    {% endif %}
+
+                    <h6><strong>Service Type:&nbsp; &nbsp; {{data.service_name}}</strong></h6><br>
+
+                    <h6><strong> Photo:&nbsp; &nbsp; <br><img src="{{data.service_photo}}" class="responsive"></strong>
+                    </h6><br>
+                    <h6><strong>Service Entry Taken By:&nbsp; &nbsp; {{data.service_by}}</strong></h6><br>
+                    <h6><strong>Current Status:&nbsp; &nbsp; {{data.service_status}}</strong></h6><br>
+
+
+                </div>
+                <div class="tile-footer">
+                    <div class="row">
+                        <div class="col-md-5 col-md-offset-3">
+                            <a class='btn btn-primary' role='button'
+                               href=" {% url 'service_edit_form' data.pk %} ">Edit</a>
+                        </div>&nbsp;&nbsp;&nbsp;
+
+                        <div class="col-md-5 col-md-offset-3">
+                            <a class='btn btn-primary' role='button'
+                               href=" {% url 'service_reply_form' data.pk %} ">Take Action</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="col-md-6">
+            {% for each in data_list %}
+            <div class="tile">
+                <h3 class="tile-title">Action Entry No : {{forloop.counter}}</h3>
+                <div class="tile-body">
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-3">Service No: </label>
+                        <div class="col-md-8">
+                            {{each.replyService_service_number}}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-3">Date: </label>
+                        <div class="col-md-8">
+                            {{each.reply_date}}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-3">photo: </label>
+                        <div class="col-md-8">
+                            <img src="{{each.photo.url}}" class="responsive">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-3">Status: </label>
+                        {% if each.replyService_status == "Pending" %}
+                        <div class="col-md-8">
+                            <font color="red">
+                                {{each.replyService_status}}
+                            </font>
+                        </div>
+                        {% else %}
+                        {% if each.replyService_status == "Completed" %}
+                        <div class="col-md-8">
+                            <font color="green">
+                                {{each.replyService_status}}
+                            </font>
+                        </div>
+                        {% else %}
+                        {% if each.replyService_status == "On progress" %}
+                        <div class="col-md-8">
+                            <font color="orange">
+                                {{each.replyService_status}}
+                            </font>
+                        </div>
+                        {% else %}
+                        <div class="col-md-8">
+                            <font color="black">
+                                {{each.replyService_status}}
+                            </font>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-3">Comments: </label>
+                        <div class="col-md-8">
+                            {{each.replyService_comment}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-4">Action Taken By : </label>
+                        <div class="col-md-8">
+                            {{each.service_by}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock content %}
+

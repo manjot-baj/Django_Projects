@@ -1,0 +1,124 @@
+{% extends 'SMdashboard/base.html' %}
+{% load static %}
+{% block content %}
+{{ block.super }}
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-file-text-o"></i> vendor Information</h1>
+        <p>vendor Information</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <section class="invoice">
+
+                <div class="row invoice-info">
+                    <div class="col-4">
+                        <h6><strong>Name :&nbsp; &nbsp; {{vendor_name}}</strong></h6><br/>
+
+                        {% if vendor_contact_Name == "" or vendor_contact_Name == None %}
+                        <h6><strong>Contact Name:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong>Contact Name:&nbsp; &nbsp; {{vendor_contact_Name}}</strong></h6><br/>
+                        {% endif %}
+
+                        {% if vendor_TIN == "" or vendor_TIN == None %}
+                        <h6><strong>TIN:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong>TIN:&nbsp; &nbsp; {{vendor_TIN}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_email == "" or vendor_email == None %}
+                        <h6><strong>Email:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong>Email:&nbsp; &nbsp; {{vendor_email}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_phone == "" or vendor_phone == None %}
+                        <h6><strong>Phone:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong>Phone:&nbsp; &nbsp; {{vendor_phone}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_billing_address == "" or vendor_billing_address == None %}
+                        <h6><strong>Billing Address:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Billing Address:&nbsp; &nbsp; {{vendor_billing_address}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_billing_zip == "" or vendor_billing_zip == None %}
+                        <h6><strong>Billing Zip:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Billing Zip:&nbsp; &nbsp; {{vendor_billing_zip}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_billing_city == "" or vendor_billing_city == None %}
+                        <h6><strong>Billing City:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Billing City:&nbsp; &nbsp; {{vendor_billing_city}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_billing_state == "" or vendor_billing_state == None %}
+                        <h6><strong>Billing State:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Billing State:&nbsp; &nbsp; {{vendor_billing_state}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_billing_country == "" or vendor_billing_country == None %}
+                        <h6><strong>Billing Country:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Billing Country:&nbsp; &nbsp; {{vendor_billing_country}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_shipping_address == "" or vendor_shipping_address == None %}
+                        <h6><strong>Shipping Address:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Shipping Address:&nbsp; &nbsp; {{vendor_shipping_address}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_shipping_zip == "" or vendor_shipping_zip == None %}
+                        <h6><strong>Shipping Zip:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Shipping Zip:&nbsp; &nbsp; {{vendor_shipping_zip}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_shipping_city == "" or vendor_shipping_city == None %}
+                        <h6><strong>Shipping City:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Shipping City:&nbsp; &nbsp; {{vendor_shipping_city}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_shipping_state == "" or vendor_shipping_state == None %}
+                        <h6><strong>Shipping State:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Shipping State:&nbsp; &nbsp; {{vendor_shipping_state}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_shipping_country == "" or vendor_shipping_country == None %}
+                        <h6><strong>Shipping Country:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Shipping Country:&nbsp; &nbsp; {{vendor_shipping_country}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_details == "" or vendor_details == None %}
+                        <h6><strong>Details:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Details:&nbsp; &nbsp; {{vendor_details}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if vendor_GSTIN == "" or vendor_GSTIN == None %}
+                        <h6><strong>GSTIN:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> GSTIN:&nbsp; &nbsp; {{vendor_GSTIN}}</strong></h6><br>
+                        {% endif %}
+
+                    </div>
+
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,141 @@
+{% extends 'SMdashboard/base.html' %}
+{% load static %}
+{% load sm_tags %}
+{% block content %}
+{{ block.super }}
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-file-text-o"></i> Client Information</h1>
+        <p>Client Information</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <section class="invoice">
+
+                <div class="row invoice-info">
+                    <div class="col-4">
+                        <h6><strong>Name :&nbsp; &nbsp; {{client_name}}</strong></h6><br/>
+
+                        {% if client_contact_Name == "" or client_contact_Name == None %}
+                        <h6><strong>Contact Name:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong>Contact Name:&nbsp; &nbsp; {{client_contact_Name}}</strong></h6><br/>
+                        {% endif %}
+
+                        {% if client_TIN == "" or client_TIN == None %}
+                        <h6><strong>TIN:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong>TIN:&nbsp; &nbsp; {{client_TIN}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_email == "" or client_email == None %}
+                        <h6><strong>Email:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong>Email:&nbsp; &nbsp; {{client_email}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_phone == "" or client_phone == None %}
+                        <h6><strong>Phone:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong>Phone:&nbsp; &nbsp; {{client_phone}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_billing_address == "" or client_billing_address == None %}
+                        <h6><strong>Billing Address:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Billing Address:&nbsp; &nbsp; {{client_billing_address}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_billing_zip == "" or client_billing_zip == None %}
+                        <h6><strong>Billing Zip:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Billing Zip:&nbsp; &nbsp; {{client_billing_zip}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_billing_city == "" or client_billing_city == None %}
+                        <h6><strong>Billing City:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Billing City:&nbsp; &nbsp; {{client_billing_city}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_billing_state == "" or client_billing_state == None %}
+                        <h6><strong>Billing State:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Billing State:&nbsp; &nbsp; {{client_billing_state}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_billing_country == "" or client_billing_country == None %}
+                        <h6><strong>Billing Country:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Billing Country:&nbsp; &nbsp; {{client_billing_country}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_shipping_address == "" or client_shipping_address == None %}
+                        <h6><strong>Shipping Address:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Shipping Address:&nbsp; &nbsp; {{client_shipping_address}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_shipping_zip == "" or client_shipping_zip == None %}
+                        <h6><strong>Shipping Zip:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Shipping Zip:&nbsp; &nbsp; {{client_shipping_zip}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_shipping_city == "" or client_shipping_city == None %}
+                        <h6><strong>Shipping City:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Shipping City:&nbsp; &nbsp; {{client_shipping_city}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_shipping_state == "" or client_shipping_state == None %}
+                        <h6><strong>Shipping State:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Shipping State:&nbsp; &nbsp; {{client_shipping_state}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_shipping_country == "" or client_shipping_country == None %}
+                        <h6><strong>Shipping Country:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Shipping Country:&nbsp; &nbsp; {{client_shipping_country}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_details == "" or client_details == None %}
+                        <h6><strong>Details:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Details:&nbsp; &nbsp; {{client_details}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_GSTIN == "" or client_GSTIN == None %}
+                        <h6><strong>GSTIN:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> GSTIN:&nbsp; &nbsp; {{client_GSTIN}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_PAN == "" or client_PAN == None %}
+                        <h6><strong>PAN:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> PAN:&nbsp; &nbsp; {{client_PAN}}</strong></h6><br>
+                        {% endif %}
+
+                        {% if client_balance == "" or client_balance == None %}
+                        <h6><strong>Balance:&nbsp; &nbsp; -</strong></h6><br/>
+                        {% else %}
+                        <h6><strong> Balance:&nbsp; &nbsp; {{client_balance}}</strong></h6><br>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if request.user|is_owner %}
+                <div align="right">
+                    <a class='btn btn-primary' role='button' href=" {% url 'client_edit_form' pk %} ">Edit</a>&nbsp;&nbsp;
+                    <a class='btn btn-primary' role='button'
+                       href=" {% url 'amc' pk %} ">Generate AMC</a>
+                </div>
+                {% endif %}
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

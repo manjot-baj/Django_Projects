@@ -1,0 +1,84 @@
+{% extends 'SMdashboard/base.html' %}
+{% load static %}
+{% block content %}
+{{ block.super }}
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-th-list"></i>Products</h1>
+        <p>Products</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <div class="tile-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped" id="sampleTable">
+                        <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Unit Price</th>
+                            <th>UoM</th>
+                            <th>Quantity</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Purchase Rate</th>
+                            <th>Purchase Rate Currency</th>
+                            <th>HNS/SAC</th>
+                            <th>SKU</th>
+                            <th>Tax(%)</th>
+                            <th>CESS(%)</th>
+                            <th>CESS</th>
+
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+{{ block.super }}
+<!-- Page specific javascripts-->
+<!-- Data table plugin-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'SMdashboard/js/plugins/bootstrap-datepicker.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'SMdashboard/js/plugins/jquery.dataTables.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'SMdashboard/js/plugins/dataTables.bootstrap.min.js' %}"></script>
+<script type="text/javascript">
+var table = $('#sampleTable').DataTable({
+  columns: [
+  { data: "name"},
+  { data: "unit_price"},
+  { data: "u_o_m"},
+  { data: "quantity"},
+  {data: "description"},
+  {data:"product_type"},
+  {data:"purchase_rate"},
+  {data:"purchase_rate_currency"},
+  {data:"h_s_n_or_s_a_c"},
+  {data:"s_k_u"},
+  {data:"tax"},
+  {data:"c_e_s_s_percent"},
+  {data:"c_e_s_s"},
+ ],
+
+    columnDefs: [
+			{
+				targets: [0],
+				render: function (data, type, row, meta) {
+					return "<a href=" + "{% url 'view_product' 12345 %}".replace(/12345/, row.pk) + ">" + data + "</a>"
+				}
+			}
+		],
+
+  data: {% autoescape off %}{{data}}{% endautoescape %}
+  });
+
+</script>
+{% endblock %}

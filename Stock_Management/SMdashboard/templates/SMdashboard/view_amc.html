@@ -1,0 +1,62 @@
+{% extends 'SMdashboard/base.html' %}
+{% load static %}
+{% block content %}
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-edit"></i> AMC Details </h1>
+        <p>You will see amc details here.</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="tile">
+                <h3 class="tile-title">AMC Details</h3>
+                <div class="tile-body">
+                    <h6><strong>AMC No :&nbsp; &nbsp; {{data.amc_number}}</strong></h6><br/>
+                    <h6><strong>Client:&nbsp; &nbsp; {{data.amc_client}}</strong></h6><br>
+                    <h6><strong>Start Date:&nbsp; &nbsp; {{data.amc_start_date}}</strong></h6><br/>
+                    <h6><strong>First Service Date:&nbsp; &nbsp; {{data.amc_first_service_date}}</strong></h6><br/>
+                    <h6><strong>Second Service Date:&nbsp; &nbsp; {{data.amc_second_service_date}}</strong></h6><br/>
+                    <h6><strong>Third Service Date:&nbsp; &nbsp; {{data.amc_third_service_date}}</strong></h6><br/>
+                    <h6><strong>Fourth Service Date:&nbsp; &nbsp; {{data.amc_fourth_service_date}}</strong></h6><br/>
+                    <h6><strong>End Date:&nbsp; &nbsp; {{data.amc_end_date}}</strong></h6><br/>
+
+                    {% if data.amc_description == "" %}
+                    <h6><strong>Description:&nbsp; &nbsp; -</strong></h6><br/>
+                    {% else %}
+                    <h6><strong>Description:&nbsp; &nbsp; {{data.amc_description}}</strong></h6><br>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        {% if data.service_record %}
+        <div class="col-md-6">
+            <div class="tile">
+                <h3 class="tile-title">AMC Service Status</h3>
+                <div class="tile-body">
+                    {% for record in data.service_record %}
+                    {% if data.amc_first_service_date == record.service_date %}
+                    <h6><strong>First Service Status:&nbsp; &nbsp;{{record.service_status}}</strong></h6><br/>
+                    {% else %}
+                    {% if data.amc_second_service_date == record.service_date %}
+                    <h6><strong>Second Service Status:&nbsp; &nbsp;{{record.service_status}}</strong></h6><br/>
+                    {% else %}
+                    {% if data.amc_third_service_date == record.service_date %}
+                    <h6><strong>Third Service Status:&nbsp; &nbsp;{{record.service_status}}</strong></h6><br/>
+                    {% else %}
+                    {% if data.amc_fourth_service_date == record.service_date %}
+                    <h6><strong>Fourth Service Status:&nbsp; &nbsp;{{record.service_status}}</strong></h6><br/>
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

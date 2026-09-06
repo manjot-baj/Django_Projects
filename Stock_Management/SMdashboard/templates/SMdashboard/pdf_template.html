@@ -1,0 +1,273 @@
+{% load static %}
+<html>
+<head>
+<style>
+    @page {
+        size: a4 portrait;
+        @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 50pt; width: 512pt; top: 20pt; height: 300pt;
+        }
+        @frame content_frame {          /* Content Frame */
+            left: 50pt; width: 512pt; top: 90pt; height: 932pt;
+        }
+        @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <!-- Content for Static Frame 'header_frame' -->
+    <div id="header_content">
+<!--    	<h3>{{company_name}}</h3>-->
+<!--        <div>-->
+<!--			<img src="http://127.0.0.1:8000/uploads/profile1.jpg" alt="img" width="80px", height="80px"/>-->
+<!--		</div>-->
+
+	<table>
+		<tr>
+			<td>
+				<img src="http://127.0.0.1:8000/uploads/profile1.jpg" alt="img" width="80px", height="80px"/>
+			</td>
+			<td></td>
+			<td></td>
+			<td></td>
+<!--			<td>Invoice</td>-->
+			<td>
+			<table>
+				<tr><td><h2>Invoice no. <strong>{{number}}</strong></h2></td></tr>
+				<tr><td>Date</td></tr>
+			</table>
+			</td>
+		</tr>
+	</table>
+
+    </div>
+	<hr>
+    <!-- Content for Static Frame 'footer_frame' -->
+    <div id="footer_content">(c) - page <pdf:pagenumber>
+		of <pdf:pagecount></pdf:pagecount>
+    </div>
+
+    <!-- HTML Content -->
+    <table>
+
+			<tr>
+    			<td><h1>{{company_name}}</h1></td>
+				<td><h1>Bill To :</h1></td>
+    			<td><h1>Ship To :</h1></td>
+    		</tr>
+
+			<tr>
+
+			</tr>
+
+    		<tr>
+    			<td>{{company_address}}</td>
+    			<td>{{invoice_client}}</td>
+    			<td>{{invoice_client}}</td>
+    		</tr>
+    		<tr>
+    			<td>{{company_city}}, {{company_state}},</td>
+    			<td>{{ship_to}}, {{place_of_supply}}</td>
+    			<td>{{ship_to}}, {{place_of_supply}}</td>
+    		</tr>
+    		<tr>
+    			<td>Company pin code:{{company_pin_code}}</td>
+<!--    			<td>{{ship_to}}, {{place_of_supply}}</td>-->
+<!--                <td align="right"><strong>invoice no.{{number}}</strong></td>-->
+				<td>client pin code</td>
+				<td>client pin code</td>
+    		</tr>
+            <tr>
+    			<td>Contact datails: {{company_phone}}</td>
+    			<td>Contact datails: </td>
+    			<td>Contact datails: </td>
+<!--    			<td>Email Id:{{company_email_id}}</td>-->
+    		</tr>
+            <tr>
+    			<td>Email Id:{{company_email_id}}</td>
+<!--    			<td>Email Id:{{company_email_id}}</td>-->
+    		</tr>
+            <tr>
+    			<td>Website: {{company_website}}</td>
+<!--    			<td>Email Id:{{company_email_id}}</td>-->
+    		</tr>
+    </table>
+
+    <hr>
+
+    <table>
+    	<tr>
+			<th><h2>Sr.no</h2></th>
+    		<th><h2>Product</h2></th>
+    		<th><h2>Price</h2></th>
+    		<th><h2>Quantity</h2></th>
+			{% if place_of_supply == company_state %}
+				{% if gst == 'Yes' %}
+    				<th><h2>CGST</h2></th>
+    				<th><h2>SGST</h2></th>
+				{% endif %}
+
+
+			{% else %}
+				{% if gst == 'Yes' %}
+    				<th><h2>IGST</h2></th>
+
+				{% endif %}
+			{% endif %}
+
+            {% if discount_condition == 'Yes' %}
+                <th><h2>Discount</h2></th>
+            {% endif %}
+
+    		<th><h2>Total</h2></th>
+
+    	</tr>
+
+
+        {% for line in invoice_order_lines %}
+        <tr></tr>
+    	<tr>
+			<td align="center">{{forloop.counter}}</td>
+    		<td align="center">{{line.product_name}}</td>
+    		<td align="center">{{line.unit_price}}</td>
+    		<td align="center">{{line.quantity}}</td>
+			{% if place_of_supply == company_state %}
+				{% if gst == 'Yes' %}
+    				<td align="center">{{line.line_centralGst}}</td>
+					<td align="center">{{line.line_stateGst}}</td>
+				{% endif %}
+
+
+			{% else %}
+				{% if gst == 'Yes' %}
+    				<td align="center">{{line.line_internationalGst}}</td>
+
+				{% endif %}
+			{% endif %}
+
+            {% if discount_condition == 'Yes' %}
+                <td align="center">{{line.line_discount}}</td>
+            {% endif %}
+
+
+			{% if gst == 'Yes' %}
+    		<td align="center">{{line.total_with_gst}}</td>
+			{% endif %}
+
+			{% if gst == 'No' %}
+    		<td align="center">{{line.total_without_gst}}</td>
+			{% endif %}
+
+
+
+    	</tr>
+        {% endfor %}
+
+		<tr>
+
+		</tr>
+
+
+
+		<tr>
+            <td align="center"></td>
+			<td align="center"></td>
+    		<td align="center"></td>
+    		<td align="center"></td>
+			{% if place_of_supply == company_state %}
+				{% if gst == 'Yes' %}
+					<td align="center"><Strong>Total CGST: <img src="http://i.stack.imgur.com/vJZ9m.png" height="10" width="8"> {{centralGst}}</Strong></td>
+					<td align="center"><Strong>Total SGST: <img src="http://i.stack.imgur.com/vJZ9m.png" height="10" width="8"> {{stateGst}}</Strong></td>
+				{% endif %}
+
+
+			{% else %}
+				{% if gst == 'Yes' %}
+				<td align="center"><Strong>Total IGST: <img src="http://i.stack.imgur.com/vJZ9m.png" height="10" width="8"> {{internationalGst}}</Strong></td>
+				{% endif %}
+			{% endif %}
+
+            {% if discount_condition == 'Yes' %}
+                <td align="center"><Strong>Total Discount: <img src="http://i.stack.imgur.com/vJZ9m.png" height="10" width="8"> {{discount_amount}}</Strong></td>
+            {% endif %}
+
+			<td align="center"><Strong>Total: <img src="http://i.stack.imgur.com/vJZ9m.png" height="10" width="8"> {{grand_total_without_round}}</Strong></td>
+
+    	</tr>
+<!--		<tr>-->
+<!--			<td align="center"></td>-->
+<!--    		<td align="center"></td>-->
+<!--    		<td align="center"></td>-->
+<!--			<td align="center"><Strong>SGST: {{stateGst}}</Strong></td>-->
+
+<!--    	</tr>-->
+<!--		<tr>-->
+<!--			<td align="center"></td>-->
+<!--    		<td align="center"></td>-->
+<!--    		<td align="center"></td>-->
+<!--			<td align="center"><Strong>IGST: {{internationalGst}}</Strong></td>-->
+
+<!--    	</tr>-->
+<!--		<tr>-->
+<!--			<td align="center"></td>-->
+<!--    		<td align="center"></td>-->
+<!--    		<td align="center"></td>-->
+<!--			<td align="center"><Strong>Total Tax: {{tax_amount}}</Strong></td>-->
+
+<!--    	</tr>-->
+
+    </table>
+
+	<hr>
+    <table>
+    	<tr>
+			<th align="left"><h2><strong>Total In Words : </strong> {{grand_total_in_word}}</h2></th>
+		</tr>
+	</table>
+
+    <hr>
+
+<!--    <p><strong>Total: {{grand_total}}</strong></p>-->
+<!--    <p align="right"><strong>Sign</strong></p>-->
+    <table>
+    	<tr>
+            <th align="left"><strong>Sign</strong></th>
+			<th>TOTAL BEFORE TAX : <img src="http://i.stack.imgur.com/vJZ9m.png" height="10" width="8"> {{clean_amount}}</th>
+    	</tr>
+
+		<tr>
+            <th align="left"><strong></strong></th>
+			<th>TOTAL TAX AMOUNT : <img src="http://i.stack.imgur.com/vJZ9m.png" height="10" width="8"> {{tax_amount}}</th>
+    	</tr>
+
+		<tr>
+            <th align="left"><strong></strong></th>
+			<th>ROUNDED OFF : <img src="http://i.stack.imgur.com/vJZ9m.png" height="10" width="8"> {{rounded_off_value}}</th>
+    	</tr>
+
+		<tr>
+            <th align="left"><strong></strong></th>
+<!--			<th>TOTAL AMOUNT : <img src="http://i.stack.imgur.com/vJZ9m.png" height="10" width="8"> {{grand_total}}</th>-->
+			<th>TOTAL AMOUNT : <img src="http://127.0.0.1:8000/uploads/vJZ9m.png" height="10" width="8"> {{grand_total}}</th>
+    	</tr>
+
+		<tr>
+            <th align="left"><strong></strong></th>
+            <th>AMOUNT DUE : <img src="http://127.0.0.1:8000/uploads/vJZ9m.png" height="10" width="8"> {{grand_total}}</th>
+    	</tr>
+
+	</table>
+
+
+</body>
+</html>
+
+
+
+</body>
+</html>

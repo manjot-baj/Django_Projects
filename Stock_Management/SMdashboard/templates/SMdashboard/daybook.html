@@ -1,0 +1,114 @@
+{% extends 'SMdashboard/base.html' %}
+{% load static %}
+{% block content %}
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-edit"></i> Detailed DayBook </h1>
+        <p>You will see detailed DayBook here.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <h3 class="tile-title">DayBook Details</h3>
+            <div class="tile-body">
+                <div class="form-group row">
+                    <label class="control-label col-md-2">Date: </label>
+                    <div class="col-md-8">
+                        {{daybook_date}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-2">Number: </label>
+                    <div class="col-md-8">
+                        {{daybook_number}}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="control-label col-md-2">Customer Type: </label>
+                    <div class="col-md-8">
+                        {{daybook_customer_type}}
+                    </div>
+                </div>
+
+                {% if daybook_customer_type == "Other" %}
+                <div class="form-group row">
+                    <label class="control-label col-md-2">Name: </label>
+                    <div class="col-md-8">
+                        {{daybook_name}}
+                    </div>
+                </div>
+                {% endif %}
+                {% if daybook_customer_type == "Customer" %}
+                <div class="form-group row">
+                    <label class="control-label col-md-2">Customer Name: </label>
+                    <div class="col-md-8">
+                        {{daybook_customer_name}}
+                    </div>
+                </div>
+                {% endif %}
+                {% if daybook_customer_type == "Employee" %}
+                <div class="form-group row">
+                    <label class="control-label col-md-2">Employee Name: </label>
+                    <div class="col-md-8">
+                        {{daybook_employee_name}}
+                    </div>
+                </div>
+                {% endif %}
+                {% if daybook_customer_type == "Vendor" %}
+                <div class="form-group row">
+                    <label class="control-label col-md-2">Vendor Name: </label>
+                    <div class="col-md-8">
+                        {{daybook_vendor_name}}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="form-group row">
+                    <label class="control-label col-md-2">Description: </label>
+                    <div class="col-md-8">
+                        {{daybook_description}}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="control-label col-md-2">Status: </label>
+                    <div class="col-md-8">
+                        {{daybook_status}}
+                    </div>
+                </div>
+                {% if daybook_status == "Credit" %}
+                <div class="form-group row">
+                    <label class="control-label col-md-2">Credit Amount: </label>
+                    <div class="col-md-8">
+                        {{daybook_credit_amount}}
+                    </div>
+                </div>
+                {% endif %}
+                {% if daybook_status == "Debit" %}
+                <div class="form-group row">
+                    <label class="control-label col-md-2">Debit Amount: </label>
+                    <div class="col-md-8">
+                        {{daybook_debit_amount}}
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+
+            <div class="tile-footer">
+                <div class="row">
+                    <div class="col-md-5 col-md-offset-3">
+                        <a class='btn btn-primary' role='button' href=" {% url 'daybook_edit_form' pk %} ">Edit</a>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearix"></div>
+</div>
+</div>
+{% endblock content %}
+

@@ -1,0 +1,232 @@
+{% extends 'SMdashboard/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .invoice-box {
+        max-width: 800px;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        font-size: 16px;
+        line-height: 24px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color: #555;
+    }
+
+    .invoice-box table {
+        width: 100%;
+        line-height: inherit;
+        text-align: left;
+    }
+
+    .invoice-box table td {
+        padding: 5px;
+        vertical-align: top;
+    }
+
+    .invoice-box table tr td:nth-child(2) {
+        text-align: right;
+    }
+
+    .invoice-box table tr.top table td {
+        padding-bottom: 20px;
+    }
+
+    .invoice-box table tr.top table td.title {
+        font-size: 45px;
+        line-height: 45px;
+        color: #333;
+    }
+
+    .invoice-box table tr.information table td {
+        padding-bottom: 40px;
+    }
+
+    .invoice-box table tr.heading td {
+        background: #eee;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
+    }
+
+    .invoice-box table tr.details td {
+        padding-bottom: 20px;
+    }
+
+    .invoice-box table tr.item td{
+        border-bottom: 1px solid #eee;
+    }
+
+    .invoice-box table tr.item.last td {
+        border-bottom: none;
+    }
+
+    .invoice-box table tr.total td:nth-child(2) {
+        border-top: 2px solid #eee;
+        font-weight: bold;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+
+        .invoice-box table tr.information table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
+
+    /** RTL **/
+    .rtl {
+        direction: rtl;
+        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+
+    .rtl table {
+        text-align: right;
+    }
+
+    .rtl table tr td:nth-child(2) {
+        text-align: left;
+    }
+
+    .responsive {
+  width: 200px;
+  height: auto;
+}
+
+
+</style>
+<div class="app-title">
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tile">
+                <div class="tile-body">
+                    <div class="invoice-box">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr class="top">
+                                <td colspan="2">
+                                    <table>
+                                        <tr>
+                                            <td class="title">
+                                                <img src="{% static 'SMdashboard/images/cropped-LOGO-1.png' %}"
+                                                     height="100" width="150">
+                                            </td>
+
+                                            <td>
+                                                Service NO #: {{invoice_data.number}}<br>
+                                                Created on: {{invoice_data.service_date}}<br>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr class="information">
+                                <td colspan="2">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                {{invoice_data.company_name}}<br>
+                                                {{invoice_data.company_address|safe}}<br>
+
+                                            </td>
+
+                                            <td>
+                                                Client : {{invoice_data.service_client}}<br><br>
+                                                Service of : {{invoice_data.service_name}}<br>
+                                                Service Entry BY : {{invoice_data.service_by}}
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr class="heading">
+                                <td>
+                                    Problem Found
+                                </td>
+
+                                <td>
+                                    Initial Photo
+                                </td>
+                            </tr>
+
+                            <tr class="details">
+                                <td>
+                                    {{invoice_data.service_description}}
+                                </td>
+
+                                <td>
+                                    <img src="{{invoice_data.service_photo}}" class="responsive"><br/>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <table>
+                            <tr class="heading">
+                                <td>
+                                    Remark
+                                </td>
+
+                                <td>
+                                    Taken on
+                                </td>
+                                <td>
+                                    Status
+                                </td>
+                                <td>
+                                    Action By
+                                </td>
+                                <td>
+                                    Service Action Photo
+                                </td>
+                            </tr>
+                            {% for action in invoice_data.service_records %}
+                            <tr class="item">
+                                <td>
+                                    {{action.comment}}
+                                </td>
+
+                                <td>
+                                    {{action.date}}
+                                </td>
+                                <td>
+                                    {{action.status}}
+                                </td>
+                                <td>
+                                    {{action.service_by}}
+                                </td>
+                                <td>
+                                    <img src="{{action.photo}}" class="responsive"><br/>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        <hr>
+                        <div align="right">
+
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            Thanks and Regards,<br/>
+                            {{invoice_data.company_name}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

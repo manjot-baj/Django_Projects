@@ -1,0 +1,301 @@
+{% extends 'SMdashboard/base.html' %}
+{% load static %}
+{% block content %}
+{{ block.super }}
+
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-file-text-o"></i>Bill Of Supply</h1>
+        <p>Build Bill Of Supply</p>
+    </div>
+</div>&nbsp;
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <form class="form-horizontal" action="" method="post">
+                {% csrf_token %}
+                <section class="invoice">
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <h2 class="page-header"><i class="fa fa-globe"></i> Bill Of Supply</h2>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="text-right"> Issue Date:
+                                {{billOfSupply_maker.issue_date.value|date:'d-M-Y'}}</h5>
+                            {{billOfSupply_maker.issue_date}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-1"><strong>{{billOfSupply_maker.client.label}}</strong></label>
+                        <div class="col-md-2" onChange="my_client()">
+                            {{billOfSupply_maker.client}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-1"><strong>{{billOfSupply_maker.ship_to.label}}</strong></label>
+                        <div class="col-md-2">
+                            {{billOfSupply_maker.ship_to}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-1"><strong>{{billOfSupply_maker.place_of_supply.label}}</strong></label>
+                        <div class="col-md-2">
+                            {{billOfSupply_maker.place_of_supply}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-1"><strong>{{billOfSupply_maker.payment_terms.label}}</strong></label>
+                        <div class="col-md-2">
+                            {{billOfSupply_maker.payment_terms}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-1"><strong>{{billOfSupply_maker.gst.label}}</strong></label>
+                        <div class="col-md-2" onchange="myFunction()">
+                            {{billOfSupply_maker.gst}}
+                        </div>
+                    </div>
+<!--                    <label for="id_some"></label>-->
+                    {{ billOfSupply_lines.management_form }}
+                    <div id="form_set">
+                        {% for billOfSupplyLineForm in billOfSupply_lines %}
+                        {{form.non_field_errors}}
+                        {{form.errors}}
+                        <table class='dynamic-form-row table table-striped table-responsive'>
+                            <thead>
+                            <th>Product</th>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>UOM</th>
+                            <th>Unit Price</th>
+                            <th>Discount</th>
+                            <th>TAX</th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td onChange="my_function()">{{billOfSupplyLineForm.product}}</td>
+                                <td>{{billOfSupplyLineForm.description}}</td>
+                                <td>{{billOfSupplyLineForm.quantity}}</td>
+                                <td>{{billOfSupplyLineForm.uom}}</td>
+                                <td>{{billOfSupplyLineForm.unit_price}}</td>
+                                <td>{{billOfSupplyLineForm.discount}}</td>
+
+                                <td>{{billOfSupplyLineForm.tax}}</td>
+
+                                <td>
+                                    <button type="button"
+                                            class="remove-form-row btn btn-secondary fa fa-trash"></button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        {% endfor %}
+                    </div>
+                    <button id="add_more" type="button" class="btn btn-secondary"><i class="fa fa-plus"
+                                                                                     aria-hidden="true"></i>Add
+                    </button>
+
+                    <div class="tile-footer">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-3">
+                                <button class="btn btn-primary" type="submit" id="id_btn_create"><i
+                                        class="fa fa-fw fa-lg fa-check-circle"></i>Submit
+                                </button>&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" type="reset"><i
+                                    class="fa fa-fw fa-lg fa-times-circle"></i>Cancel
+                            </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="empty_form" style="display:none">
+    <table class='dynamic-form-row table table-striped table-responsive'>
+        <tbody>
+        <tr>
+            <td onChange="my_function()">{{billOfSupply_lines.empty_form.product}}</td>
+            <td>{{billOfSupply_lines.empty_form.description}}</td>
+            <td>{{billOfSupply_lines.empty_form.quantity}}</td>
+            <td>{{billOfSupply_lines.empty_form.uom}}</td>
+            <td>{{billOfSupply_lines.empty_form.unit_price}}</td>
+            <td>{{billOfSupply_lines.empty_form.discount}}</td>
+
+            <td>{{billOfSupply_lines.empty_form.tax}}</td>
+
+            <td>
+                <button type="button" class="remove-form-row btn btn-secondary fa fa-trash"></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% block script %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css"
+      href="{% static 'SMdashboard/datatables/select/1.3.1/css/select.bootstrap4.min.css' %}"/>
+<link rel="stylesheet" type="text/css"
+      href="{% static 'SMdashboard/datatables/buttons/1.6.0/css/buttons.bootstrap4.min.css' %}"/>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<script src="{% static 'SMdashboard/datatables/1.10.20/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'SMdashboard/datatables/1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'SMdashboard/datatables/buttons/1.6.0/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'SMdashboard/datatables/buttons/1.6.0/js/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'SMdashboard/cloudflare/ajax/libs/jszip/3.1.3/jszip.min.js' %}"></script>
+<script src="{% static 'SMdashboard/cloudflare/ajax/libs/pdfmake/0.1.53/pdfmake.min.js' %}"></script>
+<script src="{% static 'SMdashboard/cloudflare/ajax/libs/pdfmake/0.1.53/vfs_fonts.js' %}"></script>
+<script src="{% static 'SMdashboard/datatables/buttons/1.6.0/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'SMdashboard/datatables/buttons/1.6.0/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'SMdashboard/datatables/select/1.3.1/js/dataTables.select.min.js' %}"></script>
+<script src="{% static 'SMdashboard/datatables/plug-ins/1.10.20/api/sum().js' %}"></script>
+<script type="text/javascript" src="{% static 'SMdashboard/js/plugins/sweetalert.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'SMdashboard/js/plugins/bootstrap-datepicker.min.js' %}"></script>
+
+
+<link rel="stylesheet" href="{% static 'SMdashboard/cloudflare/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'SMdashboard/datatables/1.10.20/css/dataTables.bootstrap4.min.css' %}">
+<link rel="stylesheet" href="{% static 'SMdashboard/datatables/buttons/1.6.0/css/buttons.bootstrap4.min.css' %}">
+<link rel="stylesheet" href="{% static 'SMdashboard/datatables/select/1.3.1/css/select.bootstrap4.min.css' %}">
+<link rel="stylesheet" href="{% static 'SMdashboard/css/main.css' %}">
+
+<script type="text/javascript">
+
+$('#add_more').click(function() {
+	var form_idx = $('#id_form-TOTAL_FORMS').val();
+	$('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+	$('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+	console.log(form_idx);
+});
+
+function updateElementIndex(el, prefix, ndx) {
+    var id_regex = new RegExp('(' + prefix + '-\\d+)');
+    var replacement = prefix + '-' + ndx;
+    if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+    if (el.id) el.id = el.id.replace(id_regex, replacement);
+    if (el.name) el.name = el.name.replace(id_regex, replacement);
+}
+
+function deleteForm(prefix, btn) {
+    var total = $('#id_form-TOTAL_FORMS').val();
+    console.log(total);
+    if (total > 1){
+        btn.closest('.dynamic-form-row').remove();
+        if (k >= 1){
+            k-= 1;
+            console.log(`okk is ${k}.`);
+        }
+        var forms = $('.dynamic-form-row');
+        $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
+        for (var i=0, formCount=forms.length; i<formCount; i++) {
+            $(forms.get(i)).find(':input').each(function() {
+                updateElementIndex(this, prefix, i);
+            });
+        }
+        $('#id_form-TOTAL_FORMS').val(total-1)
+    }
+    return false;
+}
+
+$(document).on('click', '.remove-form-row', function(e){
+    e.preventDefault();
+    deleteForm('form', $(this));
+    return false;
+});
+
+<!--function my_function(){-->
+<!--         var product_detail = $('#id_form-1-product').val()-->
+
+<!--        $.ajax({-->
+<!--            url: '{% url 'product_detail' %}',-->
+<!--            method: 'POST',-->
+<!--            data: {'product_detail': product_detail},-->
+<!--            headers: {"X-CSRFToken": '{{ csrf_token }}'},-->
+<!--            success: function(data, status, jqXHR){-->
+<!--                console.log(status, data)-->
+<!--                if(jqXHR.status == 200){-->
+<!--                    console.log(data[0]['unit_price']);-->
+<!--                    $('#id_form-1-unit_price').val(data[0]['unit_price'])-->
+<!--                    $('label[for="id_some"]').html(data[0]['unit_price']);-->
+<!--            }-->
+<!--            }-->
+<!--        })-->
+<!--     }-->
+
+var x = 'Yes'
+function myFunction() {
+    x = document.getElementById("id_gst").value;
+ }
+
+
+var k = 0;
+function my_function(){
+
+        var product_detail = $(`#id_form-${k}-product`).val()
+
+        $.ajax({
+            url: '{% url 'product_detail' %}',
+            method: 'POST',
+            data: {'product_detail': product_detail},
+            headers: {"X-CSRFToken": '{{ csrf_token }}'},
+            success: function(data, status, jqXHR){
+                console.log(status, data)
+                if(jqXHR.status == 200){
+                    console.log(data[0]['unit_price']);
+                    $(`#id_form-${k}-unit_price`).val(data[0]['unit_price'])
+                    $('label[for="id_some"]').html(data[0]['unit_price']);
+<!--                    $(`#id_form-0-discount`).val(0)-->
+                    console.log(`Fifteen is ${k}.`);
+<!--                    k+= 1;-->
+                    console.log(x)
+                    if (x == "Yes"){
+                            $(`#id_form-${k}-tax`).show();
+                            }
+                        else if (x == "No"){
+
+                        $(`#id_form-${k}-tax`).hide();
+
+                        }
+                        k+= 1;
+            }
+            }
+        })
+
+
+     }
+
+
+
+function my_client(){
+
+        var client_billing_state_detail = $(`#id_client`).val()
+        console.log(client_billing_state_detail)
+
+        $.ajax({
+            url: '{% url 'client_billing_state_detail' %}',
+            method: 'POST',
+            data: {'client_billing_state_detail': client_billing_state_detail},
+            headers: {"X-CSRFToken": '{{ csrf_token }}'},
+            success: function(data, status, jqXHR){
+                console.log(status, data)
+                if(jqXHR.status == 200){
+                    console.log(data[0]['billing_state']);
+                    $(`#id_place_of_supply`).val(data[0]['billing_state'])
+                    $(`#id_ship_to`).val(data[0]['billing_address'])
+
+            }
+            }
+        })
+
+
+     }
+
+
+
+</script>
+{% endblock %}

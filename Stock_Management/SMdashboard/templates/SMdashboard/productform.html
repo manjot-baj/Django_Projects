@@ -1,0 +1,42 @@
+{% extends 'SMdashboard/base.html' %}
+{% load static %}
+{% block content %}
+{{ block.super }}
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-edit"></i> Add Product</h1>
+        <p>Product Form</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <h3 class="tile-title">Upload New Product Data</h3>
+            <div class="tile-body">
+                <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label class="control-label col-md-3">{{form}}</label>
+                        <div class="col-md-8">
+
+                        </div>
+                    </div>
+                    <div class="tile-footer">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-3">
+                                <button class="btn btn-primary" type="submit"><i
+                                        class="fa fa-fw fa-lg fa-check-circle"></i>Submit
+                                </button>&nbsp;&nbsp;&nbsp;
+                                <a class="btn btn-secondary" href="#" onClick="window.location.reload();">
+                                    <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearix"></div>
+</div>
+{% endblock %}

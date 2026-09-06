@@ -1,0 +1,181 @@
+{% extends 'SMdashboard/base.html' %}
+{% load static %}
+{% block content %}
+{{ block.super }}
+
+<div class="app-title">
+    <div>
+        <h1><i class="fa fa-file-text-o"></i>DayBook</h1>
+        <p>Stay up to date with daily accounts </p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile">
+            <form class="form-horizontal" action="" method="post">
+                {% csrf_token %}
+                <section class="invoice">
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <h2 class="page-header">DayBook No : {{daybook.number.value}} {{daybook.number}}</h2>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="text-right"> Date:
+                                {{daybook.date.value|date:'d-M-Y'}}
+                                {{daybook.date}}</h5>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-2"><strong>{{daybook.customer_type.label}}
+                            : </strong></label>
+                        <div class="col-md-3" id="mySelect" onchange="myFunction()">
+                            {{daybook.customer_type}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-2" id="customer_name"><strong>{{daybook.customer_name.label}}
+                            : </strong></label>
+                        <div class="col-md-3">
+                            {{daybook.customer_name}}
+                        </div>
+                    </div>
+                    <div class="form-group row employee-field">
+                        <label class="control-label col-md-2" id="employee_name"><strong>{{daybook.employee_name.label}}
+                            : </strong></label>
+                        <div class="col-md-3">
+                            {{daybook.employee_name}}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-2" id="vendor_name"><strong>{{daybook.vendor_name.label}}
+                            : </strong></label>
+                        <div class="col-md-3">
+                            {{daybook.vendor_name}}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-2" id="other_name"><strong>{{daybook.name.label}} : </strong></label>
+                        <div class="col-md-3">
+                            {{daybook.name}}
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-2"><strong>{{daybook.description.label}} : </strong></label>
+                        <div class="col-md-3">
+                            {{daybook.description}}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-2"><strong>{{daybook.status.label}} : </strong></label>
+                        <div class="col-md-3" id="my_status_Select" onchange="my_status_Function()">
+                            {{daybook.status}}
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="control-label col-md-2" id="credit_amount"><strong>{{daybook.credit_amount.label}}
+                            : </strong></label>
+                        <div class="col-md-3">
+                            {{daybook.credit_amount}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="control-label col-md-2" id="debit_amount"><strong>{{daybook.debit_amount.label}}
+                            : </strong></label>
+                        <div class="col-md-3">
+                            {{daybook.debit_amount}}
+                        </div>
+                    </div>
+
+
+                    <div class="tile-footer">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-3">
+                                <button class="btn btn-primary" type="submit" id="id_btn_create"><i
+                                        class="fa fa-fw fa-lg fa-check-circle"></i>Submit
+                                </button>&nbsp;&nbsp;&nbsp;
+                               <button class="btn btn-secondary" type="reset" onClick="window.location.reload();"><i
+                                    class="fa fa-fw fa-lg fa-times-circle"></i>Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </form>
+        </div>
+    </div>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+</script>
+<script>
+    function myFunction() {
+    var x = document.getElementById("id_customer_type").value;
+    if (x == "Customer"){
+        document.getElementById("id_customer_name").style.visibility = "visible";
+        document.getElementById("customer_name").style.visibility = "visible";
+        document.getElementById("other_name").style.visibility = "hidden";
+        document.getElementById("id_name").style.visibility = "hidden";
+        document.getElementById("employee_name").style.visibility = "hidden";
+        document.getElementById("id_employee_name").style.visibility = "hidden";
+        document.getElementById("vendor_name").style.visibility = "hidden";
+        document.getElementById("id_vendor_name").style.visibility = "hidden";
+    }
+    else if (x == "Vendor"){
+        document.getElementById("id_vendor_name").style.visibility = "visible";
+         document.getElementById("vendor_name").style.visibility = "visible";
+        document.getElementById("customer_name").style.visibility = "hidden";
+        document.getElementById("id_customer_name").style.visibility = "hidden";
+         document.getElementById("employee_name").style.visibility = "hidden";
+        document.getElementById("id_employee_name").style.visibility = "hidden";
+         document.getElementById("other_name").style.visibility = "hidden";
+        document.getElementById("id_name").style.visibility = "hidden";
+    }
+    else if (x == "Employee"){
+        document.getElementById("id_employee_name").style.visibility = "visible";
+        document.getElementById("employee_name").style.visibility = "visible";
+        document.getElementById("customer_name").style.visibility = "hidden";
+        document.getElementById("id_customer_name").style.visibility = "hidden";
+        document.getElementById("vendor_name").style.visibility = "hidden";
+        document.getElementById("id_vendor_name").style.visibility = "hidden";
+         document.getElementById("other_name").style.visibility = "hidden";
+        document.getElementById("id_name").style.visibility = "hidden";
+    }
+    else if (x == "Other"){
+        document.getElementById("id_name").style.visibility = "visible";
+        document.getElementById("other_name").style.visibility = "visible";
+        document.getElementById("customer_name").style.visibility = "hidden";
+        document.getElementById("id_customer_name").style.visibility = "hidden";
+        document.getElementById("vendor_name").style.visibility = "hidden";
+        document.getElementById("id_vendor_name").style.visibility = "hidden";
+         document.getElementById("employee_name").style.visibility = "hidden";
+        document.getElementById("id_employee_name").style.visibility = "hidden";
+    }
+
+}
+
+function my_status_Function() {
+    var x = document.getElementById("id_status").value;
+    if (x == "Credit"){
+        document.getElementById("id_credit_amount").style.visibility = "visible";
+         document.getElementById("credit_amount").style.visibility = "visible";
+        document.getElementById("id_debit_amount").style.visibility = "hidden";
+        document.getElementById("debit_amount").style.visibility = "hidden";
+    }
+    else if (x == "Debit"){
+        document.getElementById("id_credit_amount").style.visibility = "hidden";
+        document.getElementById("credit_amount").style.visibility = "hidden";
+        document.getElementById("id_debit_amount").style.visibility = "visible";
+        document.getElementById("debit_amount").style.visibility = "visible";
+    }
+}
+
+</script>
+{% endblock %}
