@@ -1,0 +1,284 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Ledger</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 4mm;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #000;
+            font-size: 9px;
+            padding: 20px 40px;
+        }
+
+        .company-header {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .company-name {
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .company-address {
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .account-name {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 8px 0 5px;
+        }
+
+        .account-address {
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .account-title {
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            margin: 8px 8px 8px;
+        }
+
+        .page-number {
+            text-align: right;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .account-info {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .account-info td {
+            width: 50%;
+            padding: 1px 0;
+            vertical-align: top;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .date-range {
+            font-size: 10px;
+            text-align: center;
+            margin: 20px 0 8px;
+        }
+
+        table.ledger {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .ledger th,
+        .ledger td {
+            border: 0.6px solid #000;
+            padding: 3px 4px;
+            vertical-align: top;
+        }
+
+        .ledger th {
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .ledger td {
+            font-size: 12px;
+            line-height: 1.2;
+        }
+
+        .date-col {
+            width: 10%;
+        }
+
+        .particulars-col {
+            width: 40%;
+        }
+
+        .type-col {
+            width: 12%;
+        }
+
+        .number-col {
+            width: 14%;
+        }
+
+        .amount-col {
+            width: 12%;
+        }
+
+        .date {
+            white-space: nowrap;
+        }
+
+        .amount {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .voucher-type,
+        .voucher-no {
+            text-align: center;
+        }
+
+        thead {
+            display: table-header-group;
+        }
+
+        tbody tr {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        tfoot {
+            display: table-row-group;
+        }
+
+        tfoot .footer-spacer td {
+            border: none !important;
+            height: 30px;
+            /* adjust this */
+            padding: 0;
+        }
+
+        tfoot tr {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .summary td {
+            font-weight: bold;
+            border-top: 1px solid #000;
+        }
+
+        .closing-label {
+            text-align: right;
+        }
+
+        @media print {
+            .test-note {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="company-header">
+        <div class="company-name">{{organization}}</div>
+        <div class="company-address">
+            {{site_address}}
+        </div>
+    </div>
+    <div class="account-name">{{customer}}</div>
+    <div class="account-title">Ledger Account</div>
+    <div class="account-address">{{customer_address}}</div>
+
+    <div class="date-range">{{date_info}}</div>
+    <!-- <div class="page-number">Page {{ page_number }}</div> -->
+    <table class="ledger">
+        <thead>
+            <tr>
+                <th class="date-col">Date</th>
+                <th class="particulars-col">Particulars</th>
+                <th class="type-col">Vch Type</th>
+                <th class="number-col">Vch No.</th>
+                <th class="amount-col">Debit</th>
+                <th class="amount-col">Credit</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td class="date"></td>
+
+                <td>
+                    Opening Balance
+                </td>
+
+                <td class="voucher-type"></td>
+
+                <td class="voucher-no"></td>
+
+                <td class="amount">
+                </td>
+
+                <td class="amount">
+                    {{opening_balance}}
+                </td>
+
+            </tr>
+
+            {% for transaction in transactions %}
+            <tr>
+                <td class="date">{{transaction.date}}</td>
+
+                <td>
+                    {{transaction.particular}}
+                </td>
+
+                <td class="voucher-type">{{transaction.vch_type}}</td>
+
+                <td class="voucher-no">{{transaction.vch_no}}</td>
+
+                <td class="amount">
+                    {{transaction.debit}}
+                </td>
+
+                <td class="amount">
+                    {{transaction.credit}}
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        <tfoot>
+            <tr class="footer-spacer">
+                <td colspan="6">&nbsp;</td>
+            </tr>
+            <tr class="summary">
+                <td colspan="4" class="closing-label">Total</td>
+                <td class="amount">{{total_debit}}</td>
+                <td class="amount">{{total_credit}}</td>
+            </tr>
+            <tr class="summary">
+                <td colspan="4" class="closing-label">Closing Balance</td>
+                <td class="amount">{{closing_balance}}</td>
+                <td class="amount"></td>
+            </tr>
+            <tr class="summary">
+                <td colspan="4" class="closing-label">Grand Total</td>
+                <td class="amount">{{grand_total_debit}}</td>
+                <td class="amount">{{grand_total_credit}}</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

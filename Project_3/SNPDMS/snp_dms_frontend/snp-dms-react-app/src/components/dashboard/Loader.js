@@ -1,0 +1,39 @@
+import React from "react";
+import Logo from "../../assets/images/snp-logo.jpeg";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    alignItems: "center",
+    justifyContent: "center",
+    // textAlign: "center",
+    height: "100vh",
+    width: "100%",
+    backgroundColor: "white",
+    display: "flex",
+  },
+  img: {
+    width: 200,
+    [theme.breakpoints.down("xs")]: { width: 150 },
+  },
+  progress: {
+    width: "90%",
+    [theme.breakpoints.down("xs")]: { width: "70%" },
+  },
+}));
+
+export default function Loader() {
+  const styles = useStyles();
+  return (
+    <center>
+      <div className={styles.container}>
+        <div>
+          <img className={styles.img} src={Logo} alt="Main Page Loader" />
+          <p>Please wait while we make everything done for you</p>
+          <LinearProgress className={styles.progress} />
+        </div>
+      </div>
+    </center>
+  );
+}

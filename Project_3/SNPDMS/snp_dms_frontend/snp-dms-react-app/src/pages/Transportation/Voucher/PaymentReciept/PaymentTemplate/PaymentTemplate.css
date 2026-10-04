@@ -1,0 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-transform: uppercase;
+}

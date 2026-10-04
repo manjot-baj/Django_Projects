@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 60px 0;
+      }
+
+      /* .templateWrapper {
+      width: 80%;
+      max-width: 100%;
+      margin: 0 auto;
+      border: 3px solid #000;
+      padding: 20px;
+      text-align: center;
+    } */
+
+      .header-section1 {
+        padding-bottom: 20px;
+        text-align: center;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+      }
+
+      .headerTitle {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 30px;
+      }
+
+      @media (max-width: 768px) {
+        table {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="templateWrapper">
+      <div class="header-section1">
+        <p class="headerTitle">{{company_name}}</p>
+        <p>Office Address: {{company_address}}</p>
+      </div>
+      <br />
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Location</th>
+              <th>Invoice Date</th>
+              <th>Container No.</th>
+              <th>Gate IN/Out Date</th>
+              <th>GST No.</th>
+              <th>Invoice No.</th>
+              <th>Party Name</th>
+              <th>Payment Type</th>
+              <th>Taxable Amount</th>
+              <th>CGST Amount</th>
+              <th>SGST Amount</th>
+              <th>IGST Amount</th>
+              <th>Received Amount</th>
+              <th>Original Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for line in invoice_lines %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{line.location}}</td>
+              <td>{{line.invoice_date}}</td>
+              <td>{{line.container_no}}</td>
+              <td>{{line.gate_in_out_date}}</td>
+              <td>{{line.gst_no}}</td>
+              <td>{{line.invoice_no}}</td>
+              <td>{{line.party_name}}</td>
+              <td>{{line.payment_type}}</td>
+              <td>{{line.taxable_amount}}</td>
+              <td>{{line.cgst_amount}}</td>
+              <td>{{line.sgst_amount}}</td>
+              <td>{{line.igst_amount}}</td>
+              <td>{{line.received_amount}}</td>
+              <td>{{line.original_amount}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!-- Total Rows Outside Table -->
+      <div style="margin-top: 20px; text-align: right">
+        <p>TOTAL INVOICE AMOUNT: {{total_original_amount}}</p>
+        <p>TOTAL RECEIVED AMOUNT: {{total_received_amount}}</p>
+        <p>TOTAL REMAINING AMOUNT: {{total_remaining_amount}}</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- main block container -->
+    <div
+      style="
+        border: 1px solid #000;
+        width: 100%;
+        height: max-content;
+        margin: 0px auto;
+      "
+    >
+      <!-- first rectangle block-->
+      <div
+        style="
+          border: 1px solid #000;
+          width: 100%;
+          height: max-content;
+          display: flex;
+          justify-content: space-between;
+        "
+      >
+        <!-- company logo and location block -->
+        <div style="padding-left: 10px">
+          <p>{Company logo}</p>
+          <p style="width: 80%">GHCS Empty Yard - {Location}</p>
+        </div>
+        <!-- payment receipt text block -->
+        <div
+          style="
+            border: 1px solid #000;
+            /* width: 30%; */
+            height: initial;
+            background-color: #888;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 20px;
+          "
+        >
+          <h3>PAYMENT RECEIPT</h3>
+        </div>
+      </div>
+      <!-- second rectangle block -->
+      <div style="width: 100%; height: 150px; padding-left: 10px">
+        <p>{Address and phone number}</p>
+        <table style="width: 60%">
+          <tr style="padding: 10px">
+            <td>Receipt no:</td>
+            <td>{Receipt number value}</td>
+            <td>Receipt date :</td>
+            <td>{Receipt date value}</td>
+          </tr>
+          <tr style="padding: 10px">
+            <td style="margin-left: ">Invoice no:</td>
+            <td>{invoice number value}</td>
+            <td>Invoice date:</td>
+            <td>{invoice date value}</td>
+          </tr>
+          <tr style="padding: 10px">
+            <td>Prepared by:</td>
+            <td>{prepared by value}</td>
+            <td>Prepared date:</td>
+            <td>{prepared date value}</td>
+          </tr>
+        </table>
+      </div>
+      <!-- third rectangle block -->
+      <table
+        style="
+          width: 100%;
+          height: max-content;
+          padding-left: 10px;
+          border-collapse: collapse;
+        "
+      >
+        <tr>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Ship/Cont no. <br />
+            <p>{value}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Size/Type <br />
+            <p>{value}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Truck Number/Transporter<br />
+            <p>{value}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Currency : <br />
+            <p>{value}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Customer <br />
+            <p>{value}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Delivery date: <br />
+            <p>{value}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Due date : <br />
+            <p>{value}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Linear Name: <br />
+            <p>{value}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Shipper / Consignor : <br />
+            <p>{value}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            IN/OUT date & time: <br />
+            <p>{value}</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <table
+      style="
+        width: 100%;
+        border-collapse: collapse;
+        margin: 30px auto 12px auto;
+      "
+    >
+      <tr>
+        <th
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          Sr No.
+        </th>
+        <th
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          Invoice No.
+        </th>
+        <th
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          Invoice date
+        </th>
+        <th
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          Charge Type
+        </th>
+        <th
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          Description
+        </th>
+        <th
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          Invoice Current Amount
+        </th>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          1
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Invoice number value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Invoice date value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Charge Type value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Description value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Invoice Current Amount value}
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        ></td>
+        <td
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        ></td>
+        <td
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          <b>Gross Amount</b>
+        </td>
+        <td
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+           colspan="3"
+        >
+          <b>{Amount value}</b>
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          Amount in words
+        </td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+          colspan="3"
+        >
+          {Amount in words value}
+        </td>
+        <!-- <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td> -->
+      </tr>
+      <tr></tr>
+    </table>
+
+    <p style="width: 100%; margin: 12px auto">Remarks:</p>
+    <div style="margin-top: 50px">
+      <hr />
+      <div style="float: right; width: 200px">
+        <span style="border-bottom: 2px solid #000; width: 200px"></span>
+        <p style="text-align: center">Authorised signatory</p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+from celery import bugreport
+from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
+from mnr.NewViews import (
+    tariff,
+    mnr_staff,
+    grid_views,
+    mnr_view,
+    survey,
+    estimate,
+    approval,
+    repair,
+    estimate_wistim_views,
+    repair_distim_views,
+    surveyor_repair,
+    estimate_distim_views,
+    available_views,
+    wistim_distim_s3,
+    attendance_views,
+)
+
+urlpatterns = [
+    path("get_row_tariff_data/", tariff.TariffRowDataApiView.as_view()),
+    path("upload_tariff/", tariff.UploadTariff.as_view()),
+    path(
+        "upload_specific_location/",
+        tariff.UploadSpecificLocationCodeDesc.as_view(),
+    ),
+    path("get_all_tariff/", tariff.ListTariff.as_view()),
+    path("get_all_tariff/download/", tariff.DowloadTariff.as_view()),
+    path("get_all_tariff/delete/", tariff.DeleteTariff.as_view()),
+    path("add_staff/", mnr_staff.AddMnrStaff.as_view()),
+    path("get_all_staff/", mnr_staff.ListMnrStaff.as_view()),
+    path("get_all_staff/<int:pk>/", mnr_staff.GetAndUpdateMnrStaff.as_view()),
+    path("get_all_staff/delete/", mnr_staff.DeleteMnrStaff.as_view()),
+    path("grid/", grid_views.GridView.as_view()),
+    path("unlock_survey_estimate/", mnr_view.UnlockSurveyEstimateViews.as_view()),
+    path("get_by_edit/", mnr_view.MnrDataViewByEdit.as_view()),
+    path("get_by_search/", mnr_view.MnrDataViewBySearch.as_view()),
+    path("survey/", survey.SurveyEntry.as_view()),
+    path("survey/<int:pk>/", survey.UpdateSurvey.as_view()),
+    path(
+        "survey/<int:pk>/make_available_reverse/",
+        survey.MakeAvailableReverseView.as_view(),
+    ),
+    path("survey/<int:pk>/upload/", survey.SurveyUploadView.as_view()),
+    path("survey/<int:pk>/download/", survey.DownloadSurveyFile.as_view()),
+    path("survey/<int:pk>/upload_image/", survey.SurveyImageUploadView.as_view()),
+    path("survey/<int:pk>/download_image/", survey.SurveyImageDownloadView.as_view()),
+    path("survey/<int:pk>/delete_image/", survey.SurveyImageDeleteView.as_view()),
+    path("calculate_estimate/", estimate.CalculateEstimateView.as_view()),
+    path("estimate/", estimate.EstimateEntry.as_view()),
+    path("estimate/<int:pk>/", estimate.EstimateUpdate.as_view()),
+    path("approval/", approval.ApprovalView.as_view()),
+    path("repair/", repair.RepairView.as_view()),
+    path("repair/<int:pk>/", repair.RepairView.as_view()),
+    path("repair/<int:pk>/upload/", repair.RepairUploadView.as_view()),
+    path("repair/<int:pk>/download/", repair.RepairView.as_view()),
+    path("repair/<int:pk>/upload_image/", repair.RepairImageUploadView.as_view()),
+    path("repair/<int:pk>/download_image/", repair.RepairImageDownloadView.as_view()),
+    path("repair/<int:pk>/delete_image/", repair.RepairImageDeleteView.as_view()),
+    path(
+        "repair/get_repair_upload_sample_file/",
+        repair.DownloadSampleFile.as_view(),
+    ),
+    path("repair/extract_repair_data/", repair.ExtractRepairData.as_view()),
+    path("repair/import_repair_data/", repair.ImportRepairData.as_view()),
+    path("repair/rejetcted_repair_data/", repair.DownloadRejectedFile.as_view()),
+    path("send_estimate_wistim/", estimate_wistim_views.EstimateWistimView.as_view()),
+    path("send_repair_distim/", repair_distim_views.RepairDistimView.as_view()),
+    path("upload_estimate_distim/", estimate_distim_views.EstimateDistimView.as_view()),
+    path(
+        "get_rejected_estimate_distim/",
+        estimate_distim_views.EstimateDistimExcelView.as_view(),
+    ),
+    path("bulk_make_available/", available_views.BulkMakeAvailableView.as_view()),
+    path("download_job_sheet/", repair.DownloadJobSheetView.as_view()),
+    path(
+        "wistim_distim_s3_uploads/",
+        wistim_distim_s3.WistimDistimDataTable.as_view(),
+    ),
+    path(
+        "wistim_distim_s3_uploads/<int:pk>/",
+        wistim_distim_s3.DownloadWistimDistimFromS3View.as_view(),
+    ),
+    path(
+        "get_bulk_tariff_download/",
+        survey.DowloadTariffForBulkSurvey.as_view(),
+    ),
+    path(
+        "get_bulk_survey_sample_download/",
+        survey.DownloadSurveySampleFile.as_view(),
+    ),
+    path("get_containers_list/", surveyor_repair.GetContainersList.as_view()),
+    path("repair_data/", surveyor_repair.GetRepairData.as_view()),
+    path("extract_survey_data/", survey.ExtractSurveyData.as_view()),
+    path("import_survey_data/", survey.ImportWashingSurveyView.as_view()),
+    path("rejected_survey_file/", survey.RejectedSurveyDataFile.as_view()),
+    path(
+        "estimate/<int:pk>/img_ftp_upload/",
+        estimate_wistim_views.WestimImgFtpUploadView.as_view(),
+    ),
+    path(
+        "estimate/<int:pk>/edi_ftp_upload/",
+        estimate_wistim_views.WestimEdiFtpUploadView.as_view(),
+    ),
+    path(
+        "repair/<int:pk>/img_ftp_upload/",
+        repair_distim_views.DestimImgFtpUploadView.as_view(),
+    ),
+    path(
+        "repair/<int:pk>/edi_ftp_upload/",
+        repair_distim_views.DestimEdiFtpUploadView.as_view(),
+    ),
+    path("add_attendance/", attendance_views.AttendanceAPIView.as_view()),
+    path("get_all_attendance_list/", attendance_views.AttendanceListAPIView.as_view()),
+    path(
+        "get_all_attendance_list/<int:pk>/",
+        attendance_views.AttendanceAPIView.as_view(),
+    ),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

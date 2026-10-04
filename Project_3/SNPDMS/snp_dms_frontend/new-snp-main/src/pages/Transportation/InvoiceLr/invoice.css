@@ -1,0 +1,13 @@
+.invoice-bill {
+  width: 100%;
+  /* display: contents; */
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin: 10px;
+}
+.invoice-flex {
+  display: flex;
+}
+.address-field textarea {
+  padding: 6px;
+}

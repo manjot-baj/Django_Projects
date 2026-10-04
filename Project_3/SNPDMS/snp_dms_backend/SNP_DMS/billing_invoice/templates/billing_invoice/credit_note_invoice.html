@@ -1,0 +1,441 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- main block container -->
+    <div style="width: 100%; height: max-content; margin: 0px auto; border: 1px solid black;">
+        <!-- first rectangle block-->
+        <div style="
+          width: 100%;
+          height: max-content;
+          display: flex;
+          justify-content: space-around;
+          border: 1px solid black;
+        ">
+            <!-- company logo block -->
+            <div style="display: flex; align-items: center; justify-content: center">
+                <p><img src="{{location_icon}}" height="100" width="150"></p>
+            </div>
+            <!-- company text, details and gst block -->
+            <div style="
+            height: initial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          ">
+                <h2>{{organization}}</h2>
+                <h4>{{site_address}}</h4>
+            </div>
+            <div style="
+            height: initial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          ">
+            </div>
+        </div>
+        <div style="
+          width: 100%;
+          height: max-content;
+          display: flex;
+          justify-content: space-around;
+          border: 1px solid black;
+        ">
+            <!-- company logo block -->
+            <div style="display: flex; align-items: center; justify-content: center">
+                <h4>GSTIN: {{location_gst_no}}</h4>
+            </div>
+            <!-- company text, details and gst block -->
+            <div style="
+            height: initial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          ">
+                <h4>Tel: {{site_contact}}</h4>
+            </div>
+        </div>
+
+        <!-- second rectangle block -->
+        <div style="display: flex; align-items: center; justify-content: center; border: 1px solid black;">
+            <h1>Tax Credit Note</h1>
+        </div>
+
+        <table border="3" class="center" style="
+          width: 100%;
+          border-collapse: collapse;
+          margin: 0px auto 10px auto;
+        ">
+            <!-- <tr>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center; width: 50%;">
+          Invoice Details
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center;  width: 50%;">
+          Bill to Party
+        </th>
+      </tr> -->
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px;">
+                    <b>Credit Note No.</b> : {{credit_note_no}}
+
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                    <b>Ref. BL No.</b> : {{ref_bl_no}}
+
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px;">
+
+                    <b>Invoice Date</b> : {{invoice_date}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                    <b>Ref. Booking No.</b> : {{ref_booking_no}}
+                </td>
+            </tr>
+            <tr>
+                <td
+                    style="border: 1px solid #000; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <b>Reverse Charges (Y/N)</b> :
+                    </div>
+                    N
+
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                    <b>Date of Supply</b> : {{supply_date}}
+
+                </td>
+            </tr>
+            <tr>
+                <td
+                    style="border: 1px solid #000; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <b>State</b> : {{location_state}}
+                    </div>
+                    <div>
+                        Code | {{location_state_code}}
+                    </div>
+
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                    <b>Place of Supply</b> : {{place_of_supply}}
+                </td>
+            </tr>
+
+            <tr>
+                <td
+                    style="border: 1px solid #000; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <b>Client Name</b> : {{main_client}}
+                    </div>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding: 5px;"></td>
+                <td style="padding: 5px;"></td>
+            </tr>
+            <tr>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center; width: 50%;">
+                    Bill to Party
+                </th>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center;  width: 50%;">
+                    Ship to Party
+                </th>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px;">
+                    <b>Name</b> : {{bill_to_party_client}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                    <b>Name</b> : {{ship_to_party_client}}
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px;">
+                    <b>Address</b> : {{bill_to_party_address}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                    <b>Address</b> : {{ship_to_party_address}}
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px;">
+                    <b>GSTIN</b> : {{bill_to_party_gst_no}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                    <b>GSTIN</b> : {{ship_to_party_gst_no}}
+                </td>
+            </tr>
+            <tr>
+                <td
+                    style="border: 1px solid #000; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <b>State</b> : {{bill_to_party_state}}
+                    </div>
+                    <div>
+                        Code | {{bill_to_party_state_code}}
+                    </div>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; ">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <b>State</b> : {{ship_to_party_state}}
+                        </div>
+                        <div>
+                            Code | {{ship_to_party_state_code}}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px;">
+                    <b>Zip Code</b> : {{bill_to_party_zip_code}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px;">
+                    <b>Zip Code</b> : {{ship_to_party_zip_code}}
+                </td>
+            </tr>
+        </table>
+
+        <!-- third rectangle block -->
+        <table border="3" style="
+          width: 100%;
+          border-collapse: collapse;
+          margin: auto;
+        ">
+            <tr>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    Sr No.
+                </th>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    Product Description
+                </th>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    HSN Code
+                </th>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    UOM
+                </th>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    QTY
+                </th>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    Rate
+                </th>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    Amount
+                </th>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    Dis %
+                </th>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    Taxable value
+                </th>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    CGST
+                </th>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    SGST
+                </th>
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    IGST
+                </th>
+
+                <th style="border: 2px solid #000; padding: 5px; text-align: center">
+                    Total
+                </th>
+            </tr>
+
+            {% for line in credit_line %}
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{ forloop.counter }}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{line.container_no}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{line.hsn_code}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{line.uom}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{line.qty}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{line.rate}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{line.amount}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{line.disc}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{line.taxable_amount}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{line.cgst_amount}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{line.sgst_amount}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{line.igst_amount}}
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    {{line.total_amount}}
+                </td>
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <span style="font-weight: bold"> Total </span>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <span style="font-weight: bold"> {{total_taxable_amount}} </span>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <span style="font-weight: bold"> {{total_cgst_amount}} </span>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <span style="font-weight: bold"> {{total_sgst_amount}} </span>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <span style="font-weight: bold"> {{total_igst_amount}} </span>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <span style="font-weight: bold"> {{grand_total_amount}} </span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="9" style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <b>Total Invoice Amount in words</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px;" colspan="3">
+                    <b>Total Amount before Tax</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <b>{{total_taxable_amount}}</b>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="9" rowspan="4" style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <b>{{grand_total_amount_word}}</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px;" colspan="3">
+                    <b>Add CGST</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <b>{{total_cgst_amount}}</b>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px; " colspan="3">
+                    <b>Add SGST</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <b>{{total_sgst_amount}}</b>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px; " colspan="3">
+                    <b>Add IGST</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <b>{{total_igst_amount}}</b>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px;" colspan="3">
+                    <b>Total Tax Amount</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <b>{{total_tax_amount}}</b>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" colspan="5">
+                    <b>Bank Details</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" colspan="4" rowspan="5"></td>
+                <td style="border: 1px solid #000; padding: 5px;" colspan="3">
+                    <b>Total Amount after Tax</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <b>{{grand_total_amount}}</b>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px; " colspan="5">
+                    <b>Bank IFSC Code : {{ifsc_code}}</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px;" colspan="3">
+                    <b>GST on Reverse Charge</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center">
+                    <b>0</b>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px;" colspan="5">
+                    <b>Bank Acc No. : {{account_no}}</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px" colspan="4">
+                    Certified that the particulars given above are true and correct
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px;" colspan="5">
+                    <b>Branch : {{bank_branch}}</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" colspan="4" rowspan="2">
+                    <b>For {{organization}}</b>
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" colspan="5" rowspan="2">
+                    <b>Terms & conditions</b>
+                    <br />
+                    <br />
+                    We declare that this invoice shows the
+                    actual price of the goods described and
+                    that all particulars are true and correct.
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" colspan="4">
+                    <b>Common Seal</b>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px; text-align: center" colspan="4">
+                    <b>Authorised Signatory</b>
+                </td>
+            </tr>
+        </table>
+        <p style="text-align: center; color: red;">"This is a computer generated Invoice with no signature required."
+        </p>
+        <div style="text-align: center; margin-bottom: 10px;" />
+</body>
+
+</html>

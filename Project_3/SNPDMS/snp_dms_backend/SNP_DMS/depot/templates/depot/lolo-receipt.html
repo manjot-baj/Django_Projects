@@ -1,0 +1,362 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- main block container -->
+    <div
+      style="
+        border: 1px solid #000;
+        width: 100%;
+        height: max-content;
+        margin: 0px auto;
+      "
+    >
+      <!-- first rectangle block-->
+      <div
+        style="
+          border: 1px solid #000;
+          width: 100%;
+          height: max-content;
+          display: flex;
+          justify-content: space-between;
+        "
+      >
+        <!-- company logo and location block -->
+        <div style="padding-left: 10px">
+          <p><img src="{{location_icon}}" height="50" width="100" /></p>
+          <p style="width: 80%">
+            {{company_name}} - {{location_name}} <br /><br /><br />
+            {{client_name}}, {{site_name}}, {{email_id}}, {{mobile_no}} <br />
+            GST No: {{gst_no}}
+          </p>
+        </div>
+        <!-- payment receipt text block -->
+        <div
+          style="
+            border: 1px solid #000;
+            /* width: 30%; */
+            height: initial;
+            background-color: #888;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0px 20px;
+          "
+        >
+          <h3>PAYMENT RECEIPT</h3>
+        </div>
+      </div>
+      <!-- second rectangle block -->
+      <div style="width: 100%; height: 150px; padding-left: 10px">
+        <table style="width: 60%">
+          <tr style="padding: 10px">
+            <td>Receipt no:</td>
+            <td>{{receipt_no}}</td>
+            <td>Receipt date :</td>
+            <td>{{receipt_date}}</td>
+          </tr>
+          <tr style="padding: 10px">
+            <td>Invoice no:</td>
+            <td>{{invoice_no}}</td>
+            <td>Invoice date:</td>
+            <td>{{invoice_date}}</td>
+          </tr>
+          <tr style="padding: 10px">
+            <td>Prepared by:</td>
+            <td>{{prepared_by}}</td>
+            <td>Prepared date:</td>
+            <td>{{prepared_date}}</td>
+          </tr>
+          <tr style="padding: 10px">
+            <td>Payment Type:</td>
+            <td>{{payment_type}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <!-- third rectangle block -->
+      <table
+        style="
+          width: 100%;
+          height: max-content;
+          padding-left: 10px;
+          border-collapse: collapse;
+        "
+      >
+        <tr>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Ship/Cont no. <br />
+            <p>{{container_no}}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Size/Type <br />
+            <p>{{size}} / {{type}}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Truck Number/Transporter<br />
+            <p>{{truck_no}} / {{transporter_name}}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Currency : <br />
+            <p>{{currency}}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Customer <br />
+            <p>{{customer}}</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Delivery date: <br />
+            <p>{{delivery_date}}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Due date : <br />
+            <p>{{due_date}}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Line: <br />
+            <p>{{liner_name}}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            Shipper / Consignor : <br />
+            <p>{{shipper}} / {{consignor}}</p>
+          </td>
+          <td style="border: 2px solid #000; padding: 0 5px">
+            IN/OUT date & time: <br />
+            <p>{{date}} {{time}}</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <table
+      style="
+        width: 100%;
+        border-collapse: collapse;
+        margin: 30px auto 12px auto;
+      "
+    >
+      <tr>
+        <th
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          Sr No.
+        </th>
+        <th
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          Invoice No.
+        </th>
+        <th
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          Invoice date
+        </th>
+        <th
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          Charge Type
+        </th>
+        <th
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          Description
+        </th>
+        <th
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          Invoice Current Amount
+        </th>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          1
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {{invoice_no}}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {{invoice_date}}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {{charge_type}}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {{description}}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {{invoice_current_amount}}
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          2
+        </td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          Night Charge
+        </td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {{night_charges}}
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          3
+        </td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          Night Charge CGST(9%)
+        </td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {{cgst}}
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          4
+        </td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          Night Charge SGST(9%)
+        </td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {{sgst}}
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        ></td>
+        <td
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        ></td>
+        <td
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+        >
+          <b>Gross Amount</b>
+        </td>
+        <td
+          style="
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+            background-color: #ddd;
+          "
+          colspan="3"
+        >
+          <b>{{gross_amount}}</b>
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          Amount in words
+        </td>
+        <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+          colspan="3"
+        >
+          {{amount_in_words}}
+        </td>
+        <!-- <td
+          style="border: 1px solid #000; padding: 5px; text-align: center"
+        ></td> -->
+      </tr>
+      <tr></tr>
+    </table>
+
+    <p style="width: 100%; margin: 12px auto">Remarks: {{remarks}}</p>
+    <div style="margin-top: 50px">
+      <hr />
+      <p style="text-align: center">
+        This is computer generated receipt no signature required.
+      </p>
+      <!-- <div style="float: right; width: 200px">
+      <span style="border-bottom: 2px solid #000; width: 200px"></span>
+      <p style="text-align: center"></p>
+    </div> -->
+    </div>
+  </body>
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- main block container -->
+  <div style="width: 100%; height: max-content; margin: 0px auto; border: 1px solid black;">
+    <!-- first rectangle block-->
+    <div style="
+          width: 100%;
+          height: max-content;
+          display: flex;
+          justify-content: space-around;
+          border: 1px solid black;
+        ">
+      <!-- company logo block -->
+      <div style="display: flex; align-items: center; justify-content: center">
+        <p>{Company logo}</p>
+      </div>
+      <!-- company text, details and gst block -->
+      <div style="
+            height: initial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          ">
+        <h2>GOLDEN HORN CONTAINERS SERVICE</h2>
+        <h4>APS CONTAINERS PVT LTD (OPP. OF URAL INDIA LTD), DIGHASIPORE, <br /> P.O. - CHAKDWIPA, Dist - Purba,
+          Medinipur, Halida - 721 666 </h4>
+      </div>
+      <div style="
+            height: initial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          ">
+      </div>
+    </div>
+    <div style="
+          width: 100%;
+          height: max-content;
+          display: flex;
+          justify-content: space-around;
+          border: 1px solid black;
+        ">
+      <!-- company logo block -->
+      <div style="display: flex; align-items: center; justify-content: center">
+        <h4>GSTIN: {GST NO}</h4>
+      </div>
+      <!-- company text, details and gst block -->
+      <div style="
+            height: initial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          ">
+        <h4>Tel: {TEL NO}</h4>
+      </div>
+    </div>
+
+    <!-- second rectangle block -->
+    <div style="display: flex; align-items: center; justify-content: center; border: 1px solid black;">
+      <h1>Tax Invoice</h1>
+    </div>
+
+    <table border="3" class="center" style="
+          width: 100%;
+          border-collapse: collapse;
+          margin: 0px auto 10px auto;
+        ">
+      <!-- <tr>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center; width: 50%;">
+          Invoice Details
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center;  width: 50%;">
+          Bill to Party
+        </th>
+      </tr> -->
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px;">
+          <b>Invoice No.</b> : {Invoice Number}
+
+        </td>
+        <td style="border: 1px solid #000; padding: 5px">
+          <b>Ref. BL No.</b> : {Ref BL No}
+
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px;">
+
+          <b>Invoice Date</b> : {Invoice Date}
+
+        </td>
+        <td style="border: 1px solid #000; padding: 5px">
+          <b>Ref. Booking No.</b> : {Ref Booking No}
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="border: 1px solid #000; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <b>Reverse Charges (Y/N)</b> :
+          </div>
+          {Reverse Charge Value}
+
+        </td>
+        <td style="border: 1px solid #000; padding: 5px">
+          <b>Date of Supply</b> : {Supply Date}
+
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="border: 1px solid #000; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <b>State</b> : {State}
+          </div>
+          <div>
+            Code
+            {Code Val}
+          </div>
+
+        </td>
+        <td style="border: 1px solid #000; padding: 5px">
+          <b>Place of Supply</b> : {Supply Place}
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 5px;"></td>
+        <td style="padding: 5px;"></td>
+      </tr>
+      <tr>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center; width: 50%;">
+          Bill to Party
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center;  width: 50%;">
+          Ship to Party
+        </th>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px;">
+          <b>Name</b> : {Bill Party Name}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px">
+          <b>Name</b> : {Ship Party Name}
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px;">
+          <b>Address</b> : {Bill Party Address}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px">
+          <b>Address</b> : {Ship Party Address}
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px;">
+          <b>GSTIN</b> : {Bill Party GST}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px">
+          <b>GSTIN</b> : {Ship Party GST}
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="border: 1px solid #000; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <b>State</b> : {Bill Party State}
+          </div>
+          <div>
+            Code
+            {Code Val}
+          </div>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; ">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <b>State</b> : {Bill Party State}
+            </div>
+            <div>
+              Code
+              {Code Val}
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <!-- third rectangle block -->
+    <table border="3" style="
+          width: 100%;
+          border-collapse: collapse;
+          margin: auto;
+        ">
+      <tr>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          Sr No.
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          Product Description
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          HSN Code :
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          UOM
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          QTY
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          Rate
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          Amount
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          Dis %
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          Taxable value
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          CGST
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          SGST
+        </th>
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          IGST
+        </th>
+
+        <th style="border: 2px solid #000; padding: 5px; text-align: center">
+          Total
+        </th>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          1
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Product Value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {HSN Value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {UOM Value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Description value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Quantity value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Rate value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Amount value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Taxable value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {CGST value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {SGST value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {IGST value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Total value}
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          2
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Product Value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {HSN Value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {UOM Value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Description value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Quantity value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Rate value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Amount value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Taxable value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {CGST value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {SGST value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {IGST value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Total value}
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          3
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Product Value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {HSN Value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {UOM Value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Description value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Quantity value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Rate value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Amount value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Taxable value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {CGST value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {SGST value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {IGST value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Total value}
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          4
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Product Value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {HSN Value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {UOM Value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Description value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Quantity value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Rate value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Amount value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Taxable value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {CGST value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {SGST value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {IGST value}
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          {Total value}
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <span style="font-weight: bold"> Total </span>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" />
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <span style="font-weight: bold"> {Total Taxable value} </span>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <span style="font-weight: bold"> {Total CGST value} </span>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <span style="font-weight: bold"> {Total SGST value} </span>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <span style="font-weight: bold"> {Total IGST value} </span>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <span style="font-weight: bold"> {Total Overall value} </span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="9" style="border: 1px solid #000; padding: 5px; text-align: center">
+          <b>Total Invoice Amount in words</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px;" colspan="3">
+          <b>Total Amount before Tax</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <b>{Total Overall Amount Before}</b>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="9" rowspan="4" style="border: 1px solid #000; padding: 5px; text-align: center">
+          <b>{Total Amount in Words}</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px;" colspan="3">
+          <b>Add CGST</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <b>{Total CGST Amount}</b>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; " colspan="3">
+          <b>Add SGST</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <b>{Total SGST Amount}</b>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; " colspan="3">
+          <b>Add IGST</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <b>{Total IGST Amount}</b>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px;" colspan="3">
+          <b>Total Tax Amount</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <b>{Total Tax Amount}</b>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" colspan="5">
+          <b>Bank Details</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" colspan="4" rowspan="5"></td>
+        <td style="border: 1px solid #000; padding: 5px;" colspan="3">
+          <b>Total Amount after Tax</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <b>{Total Overall Amount After}</b>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; " colspan="5">
+          <b>Bank Name : {Bank Name}</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px;" colspan="3">
+          <b>GST on Reverse Charge</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center">
+          <b>{Total GST Reverse Charge}</b>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px;" colspan="5">
+          <b>Bank Acc No. : {Bank Account Number}</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px" colspan="4">
+          Certified that the particulars given above are true and correct
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px;" colspan="5">
+          <b>Branch : {Branch Name}</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" colspan="4" rowspan="2">
+          <b>For Golden Horn Container Service</b>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" colspan="5" rowspan="2">
+          <b>Terms & conditions</b>
+          <br />
+          <br />
+          We declare that this invoice shows the
+          actual price of the goods described and
+          that all particulars are true and correct.
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" colspan="4">
+          <b>Common Seal</b>
+        </td>
+        <td style="border: 1px solid #000; padding: 5px; text-align: center" colspan="4">
+          <b>Authorised Signatory</b>
+        </td>
+      </tr>
+    </table>
+    <div style="text-align: center; margin-bottom: 50px;" />
+</body>
+
+</html>

@@ -1,0 +1,237 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div style="border: 1px solid #000; margin: 40px">
+    <div style="
+          width: 100%;
+          /* margin: 10px; */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        ">
+      <p><img src="{{company_logo}}" height="100" width="150" /></p>
+    </div>
+    <!-- ✅ Updated Image Section -->
+      <div style="
+          width: 80%;
+          margin: 10px auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 20px;
+        ">
+        
+        <!-- EIR Image -->
+        <img src="{{eir_img}}" 
+             alt="EIR IMAGE" 
+             style="width: 75%; border: 1px solid #000;" />
+
+        <!-- Driver Photo -->
+        <img src="{{ image_link }}" 
+             alt="Driver Photo" 
+             style="
+                width: 120px;
+                height: 160px;
+                object-fit: cover;
+                border: 1px solid #000;
+             " />
+      </div>
+    <div style="width: 80%; margin: 10px auto">
+      <table style="width: 100%; border-collapse: collapse">
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">EIR No :</th>
+          <th style="border: 1px solid #000; padding: 6px">{{eir_no}}</th>
+          <th style="border: 1px solid #000; padding: 6px">Shipping line</th>
+          <th style="border: 1px solid #000; padding: 6px">
+            {{shipping_line}}
+          </th>
+        </tr>
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">Container No :</th>
+          <th style="border: 1px solid #000; padding: 6px">
+            {{container_no}}
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">
+            Gate In/Out Date Time
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">{{date}} <br> {{time}}</th>
+        </tr>
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">Cycle type :</th>
+          <th style="border: 1px solid #000; padding: 6px">{{cycle_type}}</th>
+          <th style="border: 1px solid #000; padding: 6px">Stack position</th>
+          <th style="border: 1px solid #000; padding: 6px">
+            <!--              {Stack position value}-->
+          </th>
+        </tr>
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">Size/type :</th>
+          <th style="border: 1px solid #000; padding: 6px">
+            {{size}} / {{type}}
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">Line Seal No :</th>
+          <th style="border: 1px solid #000; padding: 6px">{{seal_no}}</th>
+        </tr>
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">Gate Pass No :</th>
+          <th style="border: 1px solid #000; padding: 6px">
+            {{gate_pass_no}}
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">License No.</th>
+          <th style="border: 1px solid #000; padding: 6px">{{license_no}}</th>
+        </tr>
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">Truck No :</th>
+          <th style="border: 1px solid #000; padding: 6px">{{truck_no}}</th>
+          <th style="border: 1px solid #000; padding: 6px">Commodity</th>
+          <th style="border: 1px solid #000; padding: 6px">
+            <!--              {Commodity value}-->
+          </th>
+        </tr>
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">
+            Transporter name:
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">
+            {{transporter_name}}
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">
+            Going To/ Coming From :
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">
+            {{going_to_coming_from}}
+          </th>
+        </tr>
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">Driver Name</th>
+          <th style="border: 1px solid #000; padding: 6px">
+            {{driver_name}}
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">
+            Vessel/Voyage :
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">
+            {{vessel}} / {{voyage}}
+          </th>
+        </tr>
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">Driver Mobile No</th>
+          <th style="border: 1px solid #000; padding: 6px">
+            {{driver_mobile_no}}
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">
+          </th>
+        </tr>
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">
+            Consignee Name :
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">
+            {{consignee_name}}
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">EIR Done By :</th>
+          <th style="border: 1px solid #000; padding: 6px">
+            {{eir_done_by}}
+          </th>
+        </tr>
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">Shipper Name :</th>
+          <th style="border: 1px solid #000; padding: 6px">
+            {{shipper_name}}
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">
+            Shipment / Booking No :
+          </th>
+          <th style="border: 1px solid #000; padding: 6px">{{booking_no}}</th>
+        </tr>
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">Driver sign</th>
+          <th style="border-bottom: 1px solid #000; padding: 6px"></th>
+          <th style="border-bottom: 1px solid #000; padding: 6px"></th>
+          <th style="
+                border-bottom: 1px solid #000;
+                border-right: 1px solid #000;
+                padding: 6px;
+              "></th>
+        </tr>
+        <tr>
+          <th style="border: 1px solid #000; padding: 6px">Comments</th>
+          <th style="border-bottom: 1px solid #000; padding: 6px"></th>
+          <th style="border-bottom: 1px solid #000; padding: 6px"></th>
+          <th style="
+                border-bottom: 1px solid #000;
+                border-right: 1px solid #000;
+                padding: 6px;
+              "></th>
+        </tr>
+      </table>
+    </div>
+
+    <div style="
+          height: max-content;
+          border: 1px solid #e0a925;
+          width: 80%;
+          margin: 10px auto;
+        ">
+      <table style="border-collapse: collapse; width: 100%">
+        <tr>
+          <th style="
+                border: 1px solid#E0A925;
+                background-color: #e0a925;
+                color: #fff;
+              ">
+            Grap position
+          </th>
+          <th style="
+                border: 1px solid#E0A925;
+                background-color: #e0a925;
+                color: #fff;
+              ">
+            Damage code
+          </th>
+          <th style="
+                border: 1px solid#E0A925;
+                background-color: #e0a925;
+                color: #fff;
+              ">
+            Description
+          </th>
+        </tr>
+        {% for line in eir_line %}
+        <tr>
+          <th style="padding: 16px 10px">{{line.grap_position}}</th>
+          <th style="padding: 16px 10px">{{line.damage_code}}</th>
+          <th style="padding: 16px 10px">{{line.description}}</th>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <ol style="width: 80%; margin: 30px auto">
+      <li>
+        THIS CONTAINERS IS DELIVERED IN GOOD/SOUND, CARGOWORTHY AND CLEAN
+        CONDITION.
+      </li>
+      <li>THERE ARE NO CARGO RESIDUES INSIDE CONTAINER.</li>
+      <li>
+        ALL CONTAINERS SIDES ARE FREE OF ANY IMDG HAZARDOUS LABELS/STICKERS.
+      </li>
+    </ol>
+
+    <p style="width: 80%; margin: 16px auto">
+      {{site_address}}
+    </p>
+  </div>
+</body>
+
+</html>

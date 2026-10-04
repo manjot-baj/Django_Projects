@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body style="border: 2px solid black;margin: 40px 80px;">
+    <!-- main block container -->
+    <div style="width: 100%; height: max-content; margin: 0px auto;">
+        <!-- first rectangle block-->
+        <div style="
+          width: 100%;
+          height: max-content;
+          display: flex;
+          justify-content: space-around;
+       
+        ">
+
+            <div style="
+            height: initial;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+          ">
+                <h1 style="text-align: center;">{{company_name}}</h1>
+                <h2>(EMPTY DEPOT)</h2>
+                <h4 style="font-weight: 500;">{{site_address}}</h4>
+                <h4 style="font-weight: 500;margin-top: -4px;">CONTACT : {{site_contact}} </h4>
+                <!-- <h4 style="font-weight: 500;margin-top: -4px;">CONTACT : {{site_contact}} , Email : <span style="color: blue;text-decoration: underline;">mundradepot@goldenhorncontainers.com</span></h4> -->
+                <h2 style="text-decoration: underline;">CONTAINER OUT DELIVERY _ FORM - 6</h2>
+            </div>
+            <div style="
+            height: initial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          ">
+            </div>
+        </div>
+
+
+
+
+        <table class="center" style="
+          width: 100%;
+          border-collapse: collapse;
+          margin: 0px auto 10px auto;
+        ">
+
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px;">
+                    <b>Export Container Booking No.</b> : {{export_container_booking_no}}
+
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                    <b>Validity</b> : {{validity}}
+
+                </td>
+            </tr>
+            <tr>
+                <td style="border: 1px solid #000; padding: 5px;height: 24px;">
+
+
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+
+                </td>
+            </tr>
+            <tr>
+                <td
+                    style="border: 1px solid #000; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <b>Line Name /code</b>
+                    </div>
+
+
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                    {{line_name_code}}
+
+                </td>
+            </tr>
+            <tr>
+                <td
+                    style="border: 1px solid #000; height: 16px; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+
+                    </div>
+                    <div>
+
+                    </div>
+
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+
+                </td>
+            </tr>
+
+            <tr>
+                <td
+                    style="border: 1px solid #000; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <b>Container No.</b> : {{container_no}}
+                    </div>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                    <div>
+                        <b>ISO Code & Type</b> : {{iso_code}}
+                    </div>
+                </td>
+
+            </tr>
+            <tr>
+                <td
+                    style="border: 1px solid #000; height: 16px; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+
+                    </div>
+                    <div>
+
+                    </div>
+
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+
+                </td>
+            </tr>
+            <tr>
+
+                <td style="border: 1px solid #000; padding: 5px">
+                    <div>
+                        <b>CHA Name /No</b> : {{cha_name}}
+                    </div>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                    <div>
+                        <b>Vehicle</b> : {{vehicle}}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td
+                    style="border: 1px solid #000; height: 16px; padding: 5px; display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+
+                    </div>
+                    <div>
+
+                    </div>
+
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+
+                </td>
+            </tr>
+            <tr>
+
+                <td style="border: 1px solid #000; padding: 5px">
+                    <div>
+                        <b>Driver</b> : {{driver}}
+                    </div>
+                </td>
+                <td style="border: 1px solid #000; padding: 5px">
+                    <div>
+                        <b>Seal No.</b> : {{seal_no}}
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding: 5px;"></td>
+                <td style="padding: 5px;"></td>
+            </tr>
+
+
+
+
+        </table>
+        <h4 style="text-align: end;margin-right: 240px;margin-top: 60px;margin-bottom: 160px;">Authorised Signatory</h4>
+        <div style="text-align: center; margin-bottom: 10px;" />
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 60px 0;
+      }
+
+      /* .templateWrapper {
+      width: 80%;
+      max-width: 100%;
+      margin: 0 auto;
+      border: 3px solid #000;
+      padding: 20px;
+      text-align: center;
+    } */
+
+      .header-section1 {
+        padding-bottom: 20px;
+        text-align: center;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+      }
+
+      .headerTitle {
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 30px;
+      }
+
+      @media (max-width: 768px) {
+        table {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="templateWrapper">
+      <div class="header-section1">
+        <p class="headerTitle">{{company_name}}</p>
+        <p>Office Address: {{company_address}}</p>
+      </div>
+      <br />
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Container No</th>
+              <th>Size</th>
+              <th>Line</th>
+              <th>Labour Cost</th>
+              <th>Material Cost</th>
+              <th>Washing Cost</th>
+              <th>Total Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for line in invoice_lines %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{line.container_no}}</td>
+              <td>{{line.container_size}}</td>
+              <td>{{line.line}}</td>
+              <td>{{line.labour_cost}}</td>
+              <td>{{line.material_cost}}</td>
+              <td>{{line.cleaning_cost}}</td>
+              <td>{{line.amount}}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><b>Total</b></td>
+              <td><b>{{total_labour_cost}}</b></td>
+              <td><b>{{total_material_cost}}</b></td>
+              <td><b>{{total_cleaning_cost}}</b></td>
+              <td><b>{{total_amount}}</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

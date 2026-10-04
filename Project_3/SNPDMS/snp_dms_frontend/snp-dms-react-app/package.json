@@ -1,0 +1,92 @@
+{
+  "name": "snp-dms-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@date-io/date-fns": "1.x",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.13",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@material-ui/pickers": "^3.2.10",
+    "@material-ui/styles": "^4.10.0",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.13",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/material-ui": "^0.21.12",
+    "@types/react": "^17.0.5",
+    "apexcharts": "^3.24.0",
+    "axios": "^0.20.0",
+    "bootstrap": "^5.3.3",
+    "crypto-js": "^4.0.0",
+    "date-fns": "^2.16.1",
+    "dom-to-image": "^2.6.0",
+    "formik": "^2.2.9",
+    "formik-material-ui": "^3.0.0",
+    "jquery": "^3.6.0",
+    "jspdf": "^2.5.1",
+    "jwt-decode": "^3.1.1",
+    "lodash.get": "^4.4.2",
+    "lodash.set": "^4.3.2",
+    "moment": "^2.29.1",
+    "mui-datatables": "^3.7.7",
+    "multiselect-react-dropdown": "^2.0.21",
+    "notistack": "^1.0.7",
+    "react": "17.0.0",
+    "react-apexcharts": "^1.3.7",
+    "react-dom": "17.0.0",
+    "react-html5-camera-photo": "^1.5.11",
+    "react-image-mapper": "^0.0.15",
+    "react-loadable": "^5.5.0",
+    "react-redux": "^7.2.1",
+    "react-reveal": "^1.2.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "react-step-progress-bar": "^1.0.3",
+    "react-swipeable-views": "^0.13.9",
+    "react-table": "^7.6.2",
+    "react-table-v6": "^6.8.6",
+    "react-transition-group": "^4.4.1",
+    "reactstrap": "^9.1.5",
+    "recharts": "^2.5.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.0",
+    "source-map-explorer": "^2.5.3",
+    "yup": "^0.32.11"
+  },
+  "scripts": {
+    "start": "react-scripts start --openssl-legacy-provider",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "analyze": "source-map-explorer build/static/js/main.*"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "reactVendor": {
+    "test": "/[\\/]node_modules[\\/](react|react-dom|react-router-dom)[\\/]/",
+    "name": "vendor-react",
+    "chunks": "all"
+  }
+}

@@ -1,0 +1,28 @@
+.gridItem {
+  /* padding-left: 20px; */
+}
+
+.fieldLabel {
+  color: #243545;
+  font-size: 14px;
+  /* padding-bottom: 10px; */
+  font-weight: 600;
+  margin: 4px 0px;
+}
+
+.paperPadding {
+  padding: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  .gridItem {
+    padding-left: unset;
+  }
+  .paperPadding {
+    padding: 2px;
+  }
+}
+
+/* .MuiOutlinedInput-root fieldset {
+  border-color: #243545;
+} */

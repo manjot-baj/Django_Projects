@@ -1,0 +1,46 @@
+{
+    "notificationList": [
+        {
+            "id": 1,
+            "memberName": "P",
+            "description": "Pooja change the status of Ready for QA to Passes in Staging ",
+            "days": "2 days ago",
+            "status": "QA in staging"
+        },
+        {
+            "id": 2,
+            "memberName": "M",
+            "description": "Pooja change the status of Ready for QA to Passes in Staging ",
+            "Days": "2 days ago",
+            "status": "QA in staging"
+        },
+        {
+            "id": 3,
+            "memberName": "R",
+            "description": "Pooja change the status of Ready for QA to Passes in Staging ",
+            "Days": "2 days ago",
+            "status": "QA in staging"
+        },
+        {
+            "id": 4,
+            "memberName": "A",
+            "description": "Pooja change the status of Ready for QA to Passes in Staging ",
+            "Days": "2 days ago",
+            "status": "QA in staging"
+        },
+        {
+            "id": 5,
+            "memberName": "S",
+            "description": "Pooja change the status of Ready for QA to Passes in Staging ",
+            "Days": "2 days ago",
+            "status": "QA in staging"
+        },
+        {
+            "id": 6,
+            "memberName": "R",
+            "description": "Pooja change the status of Ready for QA to Passes in Staging ",
+            "Days": "2 days ago",
+            "status": "QA in staging"
+        }
+    ]
+}

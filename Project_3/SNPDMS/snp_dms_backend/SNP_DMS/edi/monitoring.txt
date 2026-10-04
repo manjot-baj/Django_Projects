@@ -1,0 +1,63 @@
+@echo off
+REM Continuous monitoring script to check and start batch files if not running
+
+REM Set the names of the two .bat files and their unique window titles
+set "batch1=run_batch.bat"
+set "title1=run_batch"
+set "batch2=run_batch_2.bat"
+set "title2=run_batch_2"
+
+REM Log file for monitoring activity
+set "logfile=monitoring_log.txt"
+
+REM Print service start message
+echo [%date% %time%] Monitoring service started. >> %logfile%
+echo [%date% %time%] Monitoring service started.
+echo.
+
+:loop
+REM Print message when loop starts
+echo [%date% %time%] Loop started. >> %logfile%
+echo [%date% %time%] Loop started.
+
+REM Check if the first batch file is running by its unique title
+tasklist /v | find /i "%title1%" >nul
+if %ERRORLEVEL% neq 0 (
+    REM If not running, start the batch file and print message
+    echo [%date% %time%] %title1% is not running. Starting it... >> %logfile%
+    echo [%date% %time%] %title1% is not running. Starting it...
+    start "%title1%" "%~dp0%batch1%"
+    echo [%date% %time%] %title1% started. >> %logfile%
+    echo [%date% %time%] %title1% started.
+) else (
+    REM If already running, print message
+    echo [%date% %time%] %title1% is already running >> %logfile%
+    echo [%date% %time%] %title1% is already running.
+)
+
+REM Check if the second batch file is running by its unique title
+tasklist /v | find /i "%title2%" >nul
+if %ERRORLEVEL% neq 0 (
+    REM If not running, start the batch file and print message
+    echo [%date% %time%] %title2% is not running. Starting it... >> %logfile%
+    echo [%date% %time%] %title2% is not running. Starting it...
+    start "%title2%" "%~dp0%batch2%"
+    echo [%date% %time%] %title2% started. >> %logfile%
+    echo [%date% %time%] %title2% started.
+) else (
+    REM If already running, print message
+    echo [%date% %time%] %title2% is already running >> %logfile%
+    echo [%date% %time%] %title2% is already running.
+)
+
+REM Wait for 5 minutes before checking again
+echo [%date% %time%] Waiting 5 minutes before checking again... >> %logfile%
+echo [%date% %time%] Waiting 5 minutes before checking again.
+timeout /t 300 /nobreak >nul
+
+REM Print message when the loop ends and starts again
+echo [%date% %time%] Loop ends. Re-starting... >> %logfile%
+echo [%date% %time%] Loop ends. Re-starting...
+
+REM Loop back to check again
+goto loop

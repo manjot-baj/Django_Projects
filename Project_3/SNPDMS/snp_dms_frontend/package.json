@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@mui/icons-material": "^5.15.3",
+    "@mui/material": "^5.15.3",
+    "react-html5-camera-photo": "^1.5.11",
+    "socket.io-client": "^4.7.5"
+  }
+}
